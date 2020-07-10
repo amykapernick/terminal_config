@@ -1,0 +1,13 @@
+.cache
+.config
+.fnm
+.lobal
+.localhost
+.npm
+.oh-my-zsh
+.ssh
+.tmux
+.vscode-server
+web
+.ssh_func
+.zsh_history

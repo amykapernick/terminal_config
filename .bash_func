@@ -1,0 +1,42 @@
+refresh () {
+        source ~/.zshrc
+}
+
+web () {
+	cd ~/web
+}
+
+pushit () {
+        git add -A
+        git commit -m "$1"
+        git push
+}
+
+commit () {
+        git add -A
+        git commit -m "$1"
+}
+
+branch () {
+	git checkout -b $1
+}
+
+main_branch () {
+	branch prod
+	git branch -D master
+	git push --set-upstream origin prod
+}
+
+i_node () {
+	mkdir $1
+	cd $1
+	git init
+ 	npx license $(npm get init.license) -o "$(npm get init.author.name)" > LICENSE
+  	npx gitignore node
+  	npx covgen "$(npm get init.author.email)"
+  	npm init -y
+  	git add -A
+  	git commit -m "Initial commit"
+}
+
+# ssh
