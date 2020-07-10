@@ -13,3 +13,5 @@ web
 .zsh_history
 .zcompdump*
 .viminfo
+.wget-hsts
+.sudo_as_admin_successful
