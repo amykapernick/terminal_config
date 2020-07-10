@@ -11,3 +11,4 @@
 web
 .ssh_func
 .zsh_history
+.zcompdump*
