@@ -103,6 +103,7 @@ SPACESHIP_BATTERY_SHOW=false
 
 . ~/.bash_alias
 . ~/.bash_func
+. ~/.ssh_func
 
 # brew
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
