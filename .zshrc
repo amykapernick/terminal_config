@@ -70,6 +70,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 SPACESHIP_BATTERY_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
 
 # User configuration
 
