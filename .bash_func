@@ -27,6 +27,7 @@ main_branch () {
 }
 
 check () {
+	cd ~
 	git-summary -d
 }
 
