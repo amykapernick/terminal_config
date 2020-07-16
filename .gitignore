@@ -16,3 +16,4 @@ web
 .wget-hsts
 .sudo_as_admin_successful
 .check_git
+.yarnrc
