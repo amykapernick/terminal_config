@@ -17,3 +17,6 @@ web
 .sudo_as_admin_successful
 .check_git
 .yarnrc
+.aspnet
+.azurefunctions
+.local
