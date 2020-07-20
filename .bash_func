@@ -23,6 +23,7 @@ branch () {
 
 main_branch () {
 	git branch -m master prod
+	git push origin HEAD
 	git push --set-upstream origin prod
 }
 
