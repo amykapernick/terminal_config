@@ -6,6 +6,10 @@ web () {
 	cd ~/web
 }
 
+wp () {
+	cd /mnt/c/Users/amyka/web
+}
+
 pushit () {
         git add -A
         git commit -m "$1"

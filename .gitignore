@@ -20,3 +20,6 @@ web
 .aspnet
 .azurefunctions
 .local
+Documents
+.bash_history
+.python_history
