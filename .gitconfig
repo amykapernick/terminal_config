@@ -3,3 +3,5 @@
 	name = Amy Kapernick
 [init]
 	defaultBranch = prod
+[push]
+	default = current
