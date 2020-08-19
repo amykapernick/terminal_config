@@ -5,3 +5,5 @@
 	defaultBranch = prod
 [push]
 	default = current
+[core]
+	excludesfile = /home/amy/.gitignore_global

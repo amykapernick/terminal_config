@@ -40,7 +40,6 @@ i_node () {
 	mkdir $1
 	cd $1
 	git init
-	git branch -m master prod
 	npx license $(npm get init.license) -o "$(npm get init.author.name)" > LICENSE
   	npx gitignore node
   	npx covgen "$(npm get init.author.email)"
