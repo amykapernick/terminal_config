@@ -23,3 +23,5 @@ web
 Documents
 .bash_history
 .python_history
+.tunnelto
+tmp
