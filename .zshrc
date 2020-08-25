@@ -72,6 +72,8 @@ source $ZSH/oh-my-zsh.sh
 SPACESHIP_BATTERY_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
 
+eval "$(starship init zsh)"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
