@@ -9,6 +9,8 @@
 .tmux
 .vscode-server
 web
+dev
+training
 .ssh_func
 .zsh_history
 .zcompdump*
@@ -25,3 +27,5 @@ Documents
 .python_history
 .tunnelto
 tmp
+.codealike/user.json
+.codealike/cache

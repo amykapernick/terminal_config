@@ -6,6 +6,14 @@ web () {
 	cd ~/web
 }
 
+dev () {
+	cd ~/dev
+}
+
+train () {
+	cd ~/training
+}
+
 wp () {
 	cd /mnt/c/Users/amyka/web
 }
