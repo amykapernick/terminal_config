@@ -42,16 +42,18 @@ main_branch () {
 check () {
 	cd ~
 	git-summary -d
+	npm-check -g
 }
 
 i_node () {
 	mkdir $1
 	cd $1
 	git init
-	npx license $(npm get init.license) -o "$(npm get init.author.name)" > LICENSE
+	license --projectName $1
   	npx gitignore node
   	npx covgen "$(npm get init.author.email)"
-  	npm init -y
+  	git remote add origin git@github.com:amykapernick/$1.git
+	npm init -y
   	git add -A
   	git commit -m "Initial commit"
 }

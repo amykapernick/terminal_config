@@ -7,3 +7,6 @@
 	default = current
 [core]
 	excludesfile = /home/amy/.gitignore_global
+
+[includeIf "gitdir:~/web/"]
+	path=~/web/.gitconfig_include

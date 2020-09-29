@@ -32,3 +32,6 @@ tmp
 .env
 .twilio-cli/runtime_modules/twilio-cli/node_modules
 .twilio-cli/runtime_modules/twilio-cli/yarn
+.twilio-cli/autocomplete/bash_setup
+.twilio-cli/autocomplete/zsh_setup
+.npmrc
