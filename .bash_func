@@ -64,3 +64,10 @@ update_tunnel () {
 }
 
 # ssh
+source ~/.ssh_func
+
+# aliases
+source ~/.bash_alias
+
+# environment variables
+source ~/.env

@@ -29,3 +29,6 @@ Documents
 tmp
 .codealike/user.json
 .codealike/cache
+.env
+.twilio-cli/runtime_modules/twilio-cli/node_modules
+.twilio-cli/runtime_modules/twilio-cli/yarn
