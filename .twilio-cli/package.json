@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "oclif": {
+    "schema": 1,
+    "plugins": [
+      {
+        "name": "@twilio-labs/plugin-signal2020",
+        "tag": "latest",
+        "type": "user"
+      }
+    ]
+  },
+  "dependencies": {
+    "@twilio-labs/plugin-signal2020": "^1.0.2"
+  }
+}
