@@ -37,3 +37,6 @@ tmp
 .npmrc
 .twilio-cli/node_modules
 .twilio-cli/yarn
+.netlify/config.json
+.pki
+.dotnet

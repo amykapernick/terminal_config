@@ -45,6 +45,11 @@ check () {
 	npm-check -g
 }
 
+update () {
+	yarn upgrade --latest
+	pushit "updated packages"
+}
+
 i_node () {
 	mkdir $1
 	cd $1
