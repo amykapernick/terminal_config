@@ -10,3 +10,5 @@
 
 [includeIf "gitdir:~/web/"]
 	path=~/web/.gitconfig_include
+[pull]
+	rebase = false
