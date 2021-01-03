@@ -70,6 +70,10 @@ update_tunnel () {
 	sudo mv tunnelto /usr/local/bin/tunnelto
 }
 
+lint () {
+	yarn add eslint eslint-config-airbnb-base eslint-loader stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
+}
+
 # ssh
 source ~/.ssh_func
 
