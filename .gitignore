@@ -40,3 +40,4 @@ tmp
 .netlify/config.json
 .pki
 .dotnet
+.azure-functions-core-tools

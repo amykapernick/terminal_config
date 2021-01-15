@@ -71,7 +71,7 @@ update_tunnel () {
 }
 
 lint () {
-	yarn add eslint eslint-config-airbnb-base eslint-loader stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
+	yarn add eslint eslint-config-airbnb-base stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
 }
 
 # ssh
