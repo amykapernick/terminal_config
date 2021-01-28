@@ -41,3 +41,4 @@ tmp
 .pki
 .dotnet
 .azure-functions-core-tools
+.ngrok
