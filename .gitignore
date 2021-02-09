@@ -42,3 +42,4 @@ tmp
 .dotnet
 .azure-functions-core-tools
 .ngrok
+.azure

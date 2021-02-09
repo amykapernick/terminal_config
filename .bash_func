@@ -50,6 +50,10 @@ update () {
 	pushit "updated packages"
 }
 
+del_zone () {
+	 find . -regex ".*Zone.Identifier$" -delete
+}
+
 i_node () {
 	mkdir $1
 	cd $1

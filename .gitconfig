@@ -1,6 +1,7 @@
 [user]
 	email = amy@kapers.dev
 	name = Amy Kapernick
+	username = amykapernick
 [init]
 	defaultBranch = prod
 [push]
