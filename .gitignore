@@ -43,3 +43,5 @@ tmp
 .azure-functions-core-tools
 .ngrok
 .azure
+.netrc
+.vim/.netrwhist
