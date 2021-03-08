@@ -78,6 +78,10 @@ lint () {
 	yarn add eslint eslint-config-airbnb-base stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
 }
 
+upstream () {
+	git branch --set-upstream-to=origin/$1 $1
+}
+
 # ssh
 source ~/.ssh_func
 
