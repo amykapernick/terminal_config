@@ -82,6 +82,15 @@ upstream () {
 	git branch --set-upstream-to=origin/$1 $1
 }
 
+update_packages () {
+	git clone $1
+	cd "$(basename "$1" .git)"
+	yarn install
+	yarn upgrade --latest
+	pushit "Updated Packages :package:"
+	cd ..
+}
+
 # ssh
 source ~/.ssh_func
 
