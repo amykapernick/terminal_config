@@ -45,3 +45,4 @@ tmp
 .azure
 .netrc
 .vim/.netrwhist
+caddy.config.json
