@@ -46,3 +46,4 @@ tmp
 .netrc
 .vim/.netrwhist
 caddy.config.json
+.motd_shown
