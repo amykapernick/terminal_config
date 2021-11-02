@@ -68,7 +68,7 @@ ZSH_THEME="spaceship"
 # TMUX Config
 #ZSH_TMUX_AUTOSTART=true
 #ZSH_TMUX_AUTOCONNECT=false
-ZSH_TMUX_CONFIG=~/.tmux.conf
+# ZSH_TMUX_CONFIG=~/.tmux.conf
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -119,7 +119,7 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # fnm
 export PATH=/home/amy/.fnm:$PATH
-eval "`fnm env --multi`"
+eval "`fnm env`"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -131,5 +131,10 @@ export NVM_DIR="$HOME/.nvm"
 export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
 
 # Automatically start D-Bus
-sudo /etc/init.d/dbus start &> /dev/null
+# sudo /etc/init.d/dbus start &> /dev/null
 
+# fpath=($fpath "/home/amy/.zfunctions")
+
+# # Set Spaceship ZSH as a prompt
+# autoload -U promptinit; promptinit
+# prompt spaceship

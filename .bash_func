@@ -91,6 +91,12 @@ update_packages () {
 	cd ..
 }
 
+i_doppler () {
+	echo "setup:" >> doppler.yaml
+	echo "        project: $1" >> doppler.yaml
+	echo "        config: dev" >> doppler.yaml
+}
+
 # ssh
 source ~/.ssh_func
 
