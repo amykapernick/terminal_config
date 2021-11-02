@@ -1,32 +1,3 @@
-scoped:
-    /:
-        token: dp.ct.eeVVdDO5z5RGPIAm5e5uF4JGwoboVllkq7pId4Xq2ko
-        api-host: https://api.doppler.com
-        dashboard-host: https://dashboard.doppler.com
-    /home/amy/dev/amys_kapers:
-        enclave.project: personal-website
-        enclave.config: dev
-    /home/amy/dev/amys_kapers/api:
-        enclave.project: personal-website-api
-        enclave.config: dev
-    /home/amy/dev/blog:
-        enclave.project: amygoestoperth
-        enclave.config: dev
-    /home/amy/web:
-        token: dp.ct.1c5luiEIUHwVAsHyZXPAtx6IqzEu95BfKVt4u54MZtY
-        api-host: https://api.doppler.com
-        dashboard-host: https://dashboard.doppler.com
-    /home/amy/web/aimhigher:
-        enclave.project: aimhigher
-        enclave.config: dev
-    /home/amy/web/aimhigher-cms:
-        enclave.project: aimhigher-cms
-        enclave.config: keystone
-    /home/amy/web/cms-aimhigher:
-        enclave.project: aimhigher-cms
-        enclave.config: dev
-    /home/amy/web/pa_generator:
-        enclave.project: pa-codegenerator
-        enclave.config: dev
+scoped: {}
 version-check:
-    checked-at: 2021-10-28T16:51:49.563002921+08:00
+    checked-at: 2021-11-02T14:53:16.211533354+08:00
