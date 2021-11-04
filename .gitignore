@@ -47,3 +47,4 @@ tmp
 .vim/.netrwhist
 caddy.config.json
 .motd_shown
+.doppler
