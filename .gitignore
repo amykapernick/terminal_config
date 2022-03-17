@@ -4,6 +4,7 @@
 .lobal
 .localhost
 .npm
+.oh-my-zsh
 .ssh
 .tmux
 .vscode-server
