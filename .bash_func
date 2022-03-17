@@ -74,6 +74,11 @@ update_tunnel () {
 	sudo mv tunnelto /usr/local/bin/tunnelto
 }
 
+tunnel () {
+	local port="${2:-8000}" subdomain="${1:-amy}"
+	tunnelto --subdomain $subdomain --port $port --dashboard-port 60000
+}
+
 lint () {
 	yarn add eslint eslint-config-airbnb-base stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
 }
@@ -95,6 +100,13 @@ i_doppler () {
 	echo "setup:" >> doppler.yaml
 	echo "        project: $1" >> doppler.yaml
 	echo "        config: dev" >> doppler.yaml
+}
+
+new_ssh () {
+	ssh-keygen -t ed25519 -C "${1:-amy@kapers.dev}" -f ~/.ssh/$2
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/$2
+	
 }
 
 # ssh
