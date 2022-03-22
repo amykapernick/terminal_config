@@ -2,6 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
 export ZSH="/home/amy/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -75,8 +77,11 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 plugins=(
   git
+  ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
