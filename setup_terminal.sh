@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## Get Info
+read -p "What do you want to call this terminal?" terminal_name
+read -p "What email address do you want to use?" email
+
+
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 sudo apt-get install build-essential
@@ -11,16 +16,14 @@ sudo apt install zip
 # Setup Git
 git config --global init.defaultBranch prod
 git config --global user.name "Amy Kapernick"
-git config --global user.email "amy@kapers.dev"
+git config --global user.email $email
 
 # Use GitHub CLI to generate and add SSH keys
 brew install gh
-ssh-keygen -t ed25519 -C "amy@kapers.dev" -f ~/.ssh/id_default
+ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_default
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_default
-read -p "What do you want to call this terminal?" terminal_name
-echo $terminal_name
-gh ssh-key add ~/.ssh/id_default.pub --title "$terminal_name"
+gh ssh-key add ~/.ssh/id_default.pub --title $terminal_name
 
 # Clone terminal config file and add to user folder
 cd ~
@@ -39,7 +42,7 @@ fnm use latest
 
 # Setup Node Init
 npm set init.author.name "Amy Kapernick"
-npm set init.author.email "amy@kapers.dev"
+npm set init.author.email $email
 npm set init.author.url "https://amyskapers.dev"
 npm set init.license "MIT"
 npm set init.version "1.0.0"
@@ -49,5 +52,4 @@ sudo apt install zsh
 curl -sS https://starship.rs/install.sh | sh
 
 # Other Utilities
-brew install exa
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt

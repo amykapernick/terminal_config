@@ -1,4 +1,2 @@
 alias python="python3.8"
 alias rm="rm -i"
-alias ls="exa"
-
