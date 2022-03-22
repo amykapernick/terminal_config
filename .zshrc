@@ -138,3 +138,8 @@ export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
 # # Set Spaceship ZSH as a prompt
 # autoload -U promptinit; promptinit
 # prompt spaceship
+fpath=($fpath "/home/amy/.zfunctions")
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
