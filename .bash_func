@@ -103,9 +103,9 @@ i_doppler () {
 }
 
 new_ssh () {
-	ssh-keygen -t ed25519 -C "${1:-amy@kapers.dev}" -f ~/.ssh/$2
+	ssh-keygen -t ed25519 -C "${2:-amy@kapers.dev}" -f ~/.ssh/$1
 	eval "$(ssh-agent -s)"
-	ssh-add ~/.ssh/$2
+	ssh-add ~/.ssh/$1
 	
 }
 
