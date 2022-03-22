@@ -2,30 +2,24 @@ refresh () {
         source ~/.zshrc
 }
 
-web () {
-	cd ~/web
-	echo $1
-	echo $1 != ''
-	if [[$1 != '']]
+move_folder () {
+	cd ~/$1
+	if [ -n "$2" ]
 	then
-		cd $1
+		cd $2
 	fi
+}
+
+web () {
+	move_folder "web" $1
 }
 
 dev () {
-	cd ~/dev
-	if [[$1 != '']]
-	then
-		cd $1
-	fi
+	move_folder "dev" $1
 }
 
 train () {
-	cd ~/training
-	if [[$1 != '']]
-	then
-		cd $1
-	fi
+	move_folder "training" $1
 }
 
 wp () {
