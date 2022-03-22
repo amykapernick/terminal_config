@@ -4,14 +4,28 @@ refresh () {
 
 web () {
 	cd ~/web
+	echo $1
+	echo $1 != ''
+	if [[$1 != '']]
+	then
+		cd $1
+	fi
 }
 
 dev () {
 	cd ~/dev
+	if [[$1 != '']]
+	then
+		cd $1
+	fi
 }
 
 train () {
 	cd ~/training
+	if [[$1 != '']]
+	then
+		cd $1
+	fi
 }
 
 wp () {
