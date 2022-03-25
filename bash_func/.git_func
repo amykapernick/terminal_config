@@ -1,0 +1,24 @@
+pushit () {
+        git add -A
+        git commit -m "$1"
+        git push
+}
+
+commit () {
+        git add -A
+        git commit -m "$2"
+}
+
+branch () {
+	git checkout -b $1
+}
+
+main_branch () {
+	git branch -m master prod
+	git push origin HEAD
+	git push --set-upstream origin prod
+}
+
+upstream () {
+	git branch --set-upstream-to=origin/$1 $1
+}

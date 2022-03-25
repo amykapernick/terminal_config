@@ -1,0 +1,18 @@
+i_node () {
+	mkdir $1
+	cd $1
+	git init
+	license --projectName $1
+  	npx gitignore node
+  	npx covgen "$(npm get init.author.email)"
+  	git remote add origin git@github.com:amykapernick/$1.git
+	npm init -y
+  	git add -A
+  	git commit -m "Initial commit"
+}
+
+i_doppler () {
+	echo "setup:" >> doppler.yaml
+	echo "        project: $1" >> doppler.yaml
+	echo "        config: dev" >> doppler.yaml
+}

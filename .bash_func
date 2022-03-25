@@ -2,112 +2,19 @@ refresh () {
         source ~/.zshrc
 }
 
-move_folder () {
-	cd ~/$1
-	if [ -n "$2" ]
-	then
-		cd $2
-	fi
-}
-
-web () {
-	move_folder "web" $1
-}
-
-dev () {
-	move_folder "dev" $1
-}
-
-train () {
-	move_folder "training" $1
-}
-
-wp () {
-	cd /mnt/c/Users/amyka/web
-}
-
-pushit () {
-        git add -A
-        git commit -m "$1"
-        git push
-}
-
-commit () {
-        git add -A
-        git commit -m "$2"
-}
-
-branch () {
-	git checkout -b $1
-}
-
-main_branch () {
-	git branch -m master prod
-	git push origin HEAD
-	git push --set-upstream origin prod
-}
-
 check () {
 	cd ~
 	git-summary -d
 	npm-check -g
 }
 
-update () {
-	yarn upgrade --latest
-	pushit "updated packages"
-}
-
 del_zone () {
 	 find . -regex ".*Zone.Identifier$" -delete
-}
-
-i_node () {
-	mkdir $1
-	cd $1
-	git init
-	license --projectName $1
-  	npx gitignore node
-  	npx covgen "$(npm get init.author.email)"
-  	git remote add origin git@github.com:amykapernick/$1.git
-	npm init -y
-  	git add -A
-  	git commit -m "Initial commit"
-}
-
-update_tunnel () {
-	cd ~/tmp
-	sudo wget https://github.com/agrinman/tunnelto/releases/download/$1/tunnelto-linux.tar.gz
-	tar xvzf tunnelto-linux.tar.gz
-	sudo mv tunnelto /usr/local/bin/tunnelto
 }
 
 tunnel () {
 	local port="${2:-8000}" subdomain="${1:-amy}"
 	tunnelto --subdomain $subdomain --port $port --dashboard-port 60000
-}
-
-lint () {
-	yarn add eslint eslint-config-airbnb-base stylelint stylelint-config-property-sort-order-smacss stylelint-order stylelint-scss
-}
-
-upstream () {
-	git branch --set-upstream-to=origin/$1 $1
-}
-
-update_packages () {
-	git clone $1
-	cd "$(basename "$1" .git)"
-	yarn install
-	yarn upgrade --latest
-	pushit "Updated Packages :package:"
-	cd ..
-}
-
-i_doppler () {
-	echo "setup:" >> doppler.yaml
-	echo "        project: $1" >> doppler.yaml
-	echo "        config: dev" >> doppler.yaml
 }
 
 new_ssh () {
@@ -116,15 +23,15 @@ new_ssh () {
 	ssh-add ~/.ssh/$1
 }
 
-wp () {
-	cd /mnt/c/Users/amy/windows/$1/app/public/wp-content/themes/${2:-$1}
-}
-
-# ssh
-source ~/.ssh_func
-
 # aliases
 source ~/.bash_alias
 
 # environment variables
 source ~/.env
+
+# Functions
+source ~/bash_func/.init
+source ~/bash_func/.git_func
+source ~/bash_func/.packages
+source ~/bash_func/.nav
+source ~/bash_func/.ssh_func

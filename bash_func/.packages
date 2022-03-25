@@ -1,0 +1,28 @@
+install_stylelint () {
+	npm install --save-dev stylelint-config-property-sort-order-smacss stylelint-scss stylelint-order
+}
+
+install_eslint () {
+	yarn add eslint eslint-config-airbnb-base
+}
+
+update () {
+	yarn upgrade --latest
+	pushit "updated packages"
+}
+
+update_packages () {
+	git clone $1
+	cd "$(basename "$1" .git)"
+	yarn install
+	yarn upgrade --latest
+	pushit "Updated Packages :package:"
+	cd ..
+}
+
+update_tunnel () {
+	cd ~/tmp
+	sudo wget https://github.com/agrinman/tunnelto/releases/download/$1/tunnelto-linux.tar.gz
+	tar xvzf tunnelto-linux.tar.gz
+	sudo mv tunnelto /usr/local/bin/tunnelto
+}
