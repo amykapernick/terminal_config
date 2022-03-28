@@ -3,7 +3,7 @@
 ## Get Info
 read -p "What do you want to call this terminal?" terminal_name
 read -p "What email address do you want to use?" email
-
+read -p "What is your tunnelto auth key?" tunnelto_key
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -53,3 +53,9 @@ curl -sS https://starship.rs/install.sh | sh
 
 # Other Utilities
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
+
+## Tunnelto
+sudo wget https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto-linux.tar.gz
+tar xvzf tunnelto-linux.tar.gz
+sudo mv tunnelto /usr/local/bin/tunnelto
+tunnelto set-auth --key $tunnelto_key
