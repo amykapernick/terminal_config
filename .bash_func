@@ -23,6 +23,10 @@ new_ssh () {
 	ssh-add ~/.ssh/$1
 }
 
+ssh_start () {
+	eval "$(ssh-agent -s)"
+}
+
 # aliases
 source ~/.bash_alias
 
@@ -34,4 +38,5 @@ source ~/bash_func/.init
 source ~/bash_func/.git_func
 source ~/bash_func/.packages
 source ~/bash_func/.nav
+source ~/bash_func/.utils
 source ~/bash_func/.ssh_func

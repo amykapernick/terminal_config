@@ -148,3 +148,9 @@ fpath=($fpath "/home/amy/.zfunctions")
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+
+PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+export PATH
+
+zmodload -ap zsh/mapfile mapfile
+zmodload zsh/mapfile
