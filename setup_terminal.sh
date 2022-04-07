@@ -55,3 +55,4 @@ curl -sS https://starship.rs/install.sh | sh
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
 sudo apt update
 sudo apt install python3-pip
+pip install pyperclip

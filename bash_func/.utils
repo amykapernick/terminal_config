@@ -1,4 +1,8 @@
 gen_fonts () {
-	python /home/amy/functions/utils.py --folder=${1:-src/fonts/}
+	python /home/amy/functions/project_styles/gen_fonts.py --folder=${1:-src/fonts/}
 	echo 'Fonts have been copied to the clipboard'
+}
+
+gen_colours () {
+	python /home/amy/functions/project_styles/gen_colours.py $1
 }
