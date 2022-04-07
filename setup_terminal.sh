@@ -57,10 +57,12 @@ tar xvzf tunnelto-linux.tar.gz
 sudo mv tunnelto /usr/local/bin/tunnelto
 tunnelto set-auth --key $tunnelto_key
 
-
-# Other Utilities
-npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
+# Python Utilities
 sudo apt update
 sudo apt install python3-pip
 pip install pyperclip
+pip install pyhumps
+pip install fire
 
+# Other Utilities
+npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
