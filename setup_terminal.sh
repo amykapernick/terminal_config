@@ -13,6 +13,11 @@ brew install gcc
 # Setup Base Utilities
 sudo apt install zip
 
+# Update Terminal
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+
 # Setup Git
 git config --global init.defaultBranch prod
 git config --global user.name "Amy Kapernick"
