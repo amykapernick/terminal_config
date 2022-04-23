@@ -73,7 +73,7 @@ pip install tldr
 # Other Utilities
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
 brew install thefuck
-brew install zoxide
+sudo apt install zoxide
 brew install dog
 brew install fzf
 brew install xh
