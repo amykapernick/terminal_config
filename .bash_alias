@@ -1,2 +1,8 @@
 alias python="python3.8"
 alias rm="rm -i"
+alias ssh_fix="fix_ssh"\
+alias dig="dog"
+alias cd="z"
+alias curl="curlie"
+alias man="tldr"
+alias ls="exa"

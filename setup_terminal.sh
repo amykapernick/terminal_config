@@ -68,7 +68,14 @@ sudo apt install python3-pip
 pip install pyperclip
 pip install pyhumps
 pip install fire
+pip install tldr
 
 # Other Utilities
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
 brew install thefuck
+brew install zoxide
+brew install dog
+brew install fzf
+brew install xh
+brew install rs/tap/curlie
+brew install exa

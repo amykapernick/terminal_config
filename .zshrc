@@ -156,3 +156,4 @@ zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
 eval $(thefuck --alias fuck)
+eval "$(zoxide init zsh)"
