@@ -154,3 +154,5 @@ export PATH
 
 zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
+
+eval $(thefuck --alias fuck)

@@ -71,3 +71,4 @@ pip install fire
 
 # Other Utilities
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
+brew install thefuck
