@@ -40,3 +40,4 @@ source ~/bash_func/.packages
 source ~/bash_func/.nav
 source ~/bash_func/.utils
 source ~/bash_func/.ssh_func
+# source ~/bash_func/.zoxide

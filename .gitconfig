@@ -13,3 +13,7 @@
 	path=~/web/.gitconfig_include
 [pull]
 	rebase = false
+[maintenance]
+	repo = /home/amy
+	repo = /home/amy/.oh-my-zsh/plugins/zsh-autocomplete
+	repo = /home/amy/.oh-my-zsh/plugins/zsh-snap

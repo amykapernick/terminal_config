@@ -78,11 +78,19 @@ ZSH_THEME="spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+# Download Znap, if it's not there yet.
+[[ -f ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/.oh-my-zsh/plugins/zsh-snap
+
+source ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh  # Start Znap
 source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 plugins=(
   git
   ssh-agent
 )
+
+znap source marlonrichert/zsh-autocomplete
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,10 +125,11 @@ eval "$(starship init zsh)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-. ~/.bash_func
-
-# brew
+eval "$(zoxide init zsh --no-aliases)"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval $(thefuck --alias fuck)
+
+. ~/.bash_func
 
 # fnm
 export PATH=/home/amy/.fnm:$PATH
@@ -155,5 +164,3 @@ export PATH
 zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
-eval $(thefuck --alias fuck)
-eval "$(zoxide init zsh)"
