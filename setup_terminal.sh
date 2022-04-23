@@ -56,6 +56,10 @@ npm set init.version "1.0.0"
 sudo apt install zsh
 curl -sS https://starship.rs/install.sh | sh
 
+## ZSH Plugins and Utils
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
+source zsh-snap/install.zsh
+
 ## Tunnelto
 sudo wget https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto-linux.tar.gz
 tar xvzf tunnelto-linux.tar.gz
@@ -73,9 +77,9 @@ pip install tldr
 # Other Utilities
 npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
 brew install thefuck
-brew install zoxide
+sudo apt install zoxide
 brew install dog
 brew install fzf
 brew install xh
 brew install rs/tap/curlie
-brew install exa
+sudo apt install exa
