@@ -83,3 +83,4 @@ brew install fzf
 brew install xh
 brew install rs/tap/curlie
 sudo apt install exa
+brew install glow
