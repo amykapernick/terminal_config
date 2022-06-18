@@ -5,3 +5,4 @@ alias cd="z"
 alias curl="curlie"
 alias man="tldr"
 alias ls="exa"
+alias git-summary='~/git-summary/git-summary'
