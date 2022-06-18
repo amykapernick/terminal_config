@@ -65,6 +65,11 @@ sudo wget https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto
 tar xvzf tunnelto-linux.tar.gz
 sudo mv tunnelto /usr/local/bin/tunnelto
 tunnelto set-auth --key $tunnelto_key
+rm tunnelto-linux.tar.gz
+
+## Ngrok
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+            
 
 # Python Utilities
 sudo apt update
@@ -75,7 +80,7 @@ pip install fire
 pip install tldr
 
 # Other Utilities
-npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
+npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
 brew install thefuck
 sudo apt install zoxide
 brew install dog
@@ -83,3 +88,5 @@ brew install fzf
 brew install xh
 brew install rs/tap/curlie
 sudo apt install exa
+brew install glow
+sudo apt-get install gawk

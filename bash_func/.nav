@@ -8,6 +8,11 @@ move_folder () {
 }
 
 web () {
+	# cd ~/web
+	# if [ -n "$1" ]
+	# then
+	# 	cd $1
+	# fi
 	move_folder "web" $1
 }
 
