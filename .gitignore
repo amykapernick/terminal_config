@@ -50,3 +50,4 @@ caddy.config.json
 .doppler
 .degit/github/withastro
 .gnupg/trustdb.gpg
+.deque/distinct_id

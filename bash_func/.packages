@@ -3,7 +3,7 @@ install_stylelint () {
 }
 
 install_eslint () {
-	yarn add eslint eslint-config-airbnb-base
+	npm install eslint eslint-config-airbnb-base eslint-plugin-import eslint-plugin-react
 }
 
 update () {
@@ -21,8 +21,24 @@ update_packages () {
 }
 
 update_tunnel () {
-	cd ~/tmp
-	sudo wget https://github.com/agrinman/tunnelto/releases/download/$1/tunnelto-linux.tar.gz
-	tar xvzf tunnelto-linux.tar.gz
-	sudo mv tunnelto /usr/local/bin/tunnelto
+	if [ -n $1 ]
+	then
+		cd ~/tmp
+		sudo wget https://github.com/agrinman/tunnelto/releases/download/$1/tunnelto-linux.tar.gz
+		tar xvzf tunnelto-linux.tar.gz
+		sudo mv tunnelto /usr/local/bin/tunnelto
+	fi
+}
+
+
+update_ubuntu () {
+	sudo apt update
+	sudo apt upgrade
+	sudo apt dist-upgrade
+	sudo apt install update-manager-core
+	sudo do-release-upgrade -d
+}
+
+check_ubuntu () {
+	lsb_release -a
 }

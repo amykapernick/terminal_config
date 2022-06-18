@@ -15,6 +15,7 @@ i_doppler () {
 	echo "setup:" >> doppler.yaml
 	echo "        project: $1" >> doppler.yaml
 	echo "        config: dev" >> doppler.yaml
+	doppler setup
 }
 
 fix_ssh () {

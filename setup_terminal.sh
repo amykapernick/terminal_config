@@ -13,6 +13,11 @@ brew install gcc
 # Setup Base Utilities
 sudo apt install zip
 
+# Update Terminal
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+
 # Setup Git
 git config --global init.defaultBranch prod
 git config --global user.name "Amy Kapernick"
@@ -51,11 +56,20 @@ npm set init.version "1.0.0"
 sudo apt install zsh
 curl -sS https://starship.rs/install.sh | sh
 
+## ZSH Plugins and Utils
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
+source zsh-snap/install.zsh
+
 ## Tunnelto
 sudo wget https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto-linux.tar.gz
 tar xvzf tunnelto-linux.tar.gz
 sudo mv tunnelto /usr/local/bin/tunnelto
 tunnelto set-auth --key $tunnelto_key
+rm tunnelto-linux.tar.gz
+
+## Ngrok
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+            
 
 # Python Utilities
 sudo apt update
@@ -63,6 +77,16 @@ sudo apt install python3-pip
 pip install pyperclip
 pip install pyhumps
 pip install fire
+pip install tldr
 
 # Other Utilities
-npm install -g npm-check azure-functions-core-tools license netlify-cli spaceship-prompt
+npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
+brew install thefuck
+sudo apt install zoxide
+brew install dog
+brew install fzf
+brew install xh
+brew install rs/tap/curlie
+sudo apt install exa
+brew install glow
+sudo apt-get install gawk
