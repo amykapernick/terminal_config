@@ -3,7 +3,7 @@
 ## Get Info
 read -p "What do you want to call this terminal?" terminal_name
 read -p "What email address do you want to use?" email
-read -p "What is your tunnelto auth key?" tunnelto_key
+# read -p "What is your tunnelto auth key?" tunnelto_key
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -31,10 +31,10 @@ ssh-add ~/.ssh/id_default
 gh ssh-key add ~/.ssh/id_default.pub --title $terminal_name
 
 # Clone terminal config file and add to user folder
-cd ~
-git clone git@github.com:amykapernick/terminal_config.git
-cp -r ~/terminal_config/. ~
-rm -rf ~/terminal_config
+# cd ~
+# git clone git@github.com:amykapernick/terminal_config.git
+# cp -r ~/terminal_config/. ~
+# rm -rf ~/terminal_config
 # read -p "Press enter to continue"
 cd ~
 git submodule update --init --recursive
@@ -61,11 +61,11 @@ git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
 source zsh-snap/install.zsh
 
 ## Tunnelto
-sudo wget https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto-linux.tar.gz
-tar xvzf tunnelto-linux.tar.gz
-sudo mv tunnelto /usr/local/bin/tunnelto
-tunnelto set-auth --key $tunnelto_key
-rm tunnelto-linux.tar.gz
+# sudo wget https://github.com/agrinman/tunnelto/releases/download/0.1.18/tunnelto-linux.tar.gz
+# tar xvzf tunnelto-linux.tar.gz
+# sudo mv tunnelto /usr/local/bin/tunnelto
+# tunnelto set-auth --key $tunnelto_key
+# rm tunnelto-linux.tar.gz
 
 ## Ngrok
 curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
@@ -82,11 +82,20 @@ pip install tldr
 # Other Utilities
 npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
 brew install thefuck
-sudo apt install zoxide
 brew install dog
 brew install fzf
 brew install xh
 brew install rs/tap/curlie
-sudo apt install exa
 brew install glow
 sudo apt-get install gawk
+brew install gnupg
+brew install dopplerhq/cli/doppler
+
+
+## Problem Utilities
+sudo apt install zoxide ## Must have Ubuntu v 21.04+
+# curl -sS https://webinstall.dev/zoxide | bash
+# brew install zoxide
+# sudo apt install exa
+wget -c http://old-releases.ubuntu.com/ubuntu/pool/universe/r/rust-exa/exa_0.9.0-4_amd64.deb
+sudo apt-get install ./exa_0.9.0-4_amd64.deb
