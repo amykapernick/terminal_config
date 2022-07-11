@@ -80,17 +80,21 @@ pip install fire
 pip install tldr
 
 # Other Utilities
+## npm
 npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
+
+## brew
 brew install thefuck
 brew install dog
 brew install fzf
 brew install xh
 brew install rs/tap/curlie
 brew install glow
-sudo apt-get install gawk
 brew install gnupg
 brew install dopplerhq/cli/doppler
 
+## apt
+sudo apt-get install gawk
 
 ## Problem Utilities
 sudo apt install zoxide ## Must have Ubuntu v 21.04+

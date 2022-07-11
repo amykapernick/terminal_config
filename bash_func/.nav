@@ -29,5 +29,5 @@ train () {
 # }
 
 wp () {
-	cd /mnt/c/Users/amy/windows/$1/app/public/wp-content/themes/${2:-$1}
+	move_folder "windows" $1/app/public/wp-content/themes/${2:-$1}
 }
