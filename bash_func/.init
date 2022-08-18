@@ -22,3 +22,14 @@ fix_ssh () {
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_default
 }
+
+clone () {
+	git clone $1
+	repo=`expr "$1" :  '.*\(\/[a-z]*\.git\)'`
+	repo=${repo#/}
+	repo=${repo%.git}
+	echo $repo
+	cd $repo
+	npm install
+	cp .env.example .env
+}
