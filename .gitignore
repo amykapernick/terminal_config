@@ -51,3 +51,4 @@ caddy.config.json
 .degit/github/withastro
 .gnupg/trustdb.gpg
 .deque/distinct_id
+.dbus

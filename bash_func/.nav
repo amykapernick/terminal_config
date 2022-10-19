@@ -4,6 +4,8 @@ move_folder () {
 	if [ -n "$2" ]
 	then
 		cd $2
+	else
+		ls -la
 	fi
 }
 
