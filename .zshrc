@@ -170,3 +170,4 @@ zmodload zsh/mapfile
 export PATH=/home/amy/.fnm:$PATH
 eval "`fnm env`"
 fpath=($fpath "/home/amy/.zfunctions")
+fpath=($fpath "/home/amy/.zfunctions")
