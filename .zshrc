@@ -32,7 +32,8 @@ ZSH_THEME="spaceship"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# zstyle ':omz:update' frequency 1
+export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -89,6 +90,7 @@ source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 plugins=(
   git
   ssh-agent
+  autoupdate
 )
 
 znap source marlonrichert/zsh-autocomplete
@@ -169,5 +171,6 @@ zmodload zsh/mapfile
 # fnm
 export PATH=/home/amy/.fnm:$PATH
 eval "`fnm env`"
+fpath=($fpath "/home/amy/.zfunctions")
 fpath=($fpath "/home/amy/.zfunctions")
 fpath=($fpath "/home/amy/.zfunctions")

@@ -1,5 +1,5 @@
 [user]
-	email = amy@kapers.dev
+	email = amy.kapernick@makerx.com.au
 	name = Amy Kapernick
 	username = amykapernick
 [init]
@@ -17,3 +17,5 @@
 	repo = /home/amy
 	repo = /home/amy/.oh-my-zsh/plugins/zsh-autocomplete
 	repo = /home/amy/.oh-my-zsh/plugins/zsh-snap
+[pager]
+	branch = false
