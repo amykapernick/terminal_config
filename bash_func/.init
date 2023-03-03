@@ -4,11 +4,25 @@ i_node () {
 	git init
 	license --projectName $1
   	npx gitignore node
-  	npx covgen "$(npm get init.author.email)"
+  	npx covgen "$(npm get init-author-email)"
   	git remote add origin git@github.com:amykapernick/$1.git
 	npm init -y
   	git add -A
   	git commit -m "Initial commit"
+
+	
+	# license="`cat ~/license`"
+	# # echo "${$license/}"
+	# year=2023
+	# year_term=insert_year
+
+	# # sed "s/{year}/$year/g" <<<"$license"
+
+	# # echo ${license/{year}/"2023"}
+
+	# echo "${license/year_term/year}"
+
+	# # $license=$(echo "`cat ~/license`" | sed "s/{year}/2020/")
 }
 
 i_doppler () {
