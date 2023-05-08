@@ -15,3 +15,7 @@ del_files () {
 		find . -regex ".*\.$1$" -delete
 	fi
 }
+
+empty_trash () {
+	rip --decompose
+}
