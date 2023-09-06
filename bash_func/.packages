@@ -42,3 +42,10 @@ update_ubuntu () {
 check_ubuntu () {
 	lsb_release -a
 }
+
+update_spaceship() {
+	npm install -g spaceship-prompt
+	NODE_VERSION=$(node -v)
+	echo "Node version: $NODE_VERSION"
+	ln -sfn ~/.fnm/node-versions/$NODE_VERSION/installation/lib/node_modules/spaceship-prompt/spaceship.zsh ~/.zfunctions/prompt_spaceship_setup
+}
