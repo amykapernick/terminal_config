@@ -57,3 +57,4 @@ Caddyfile
 .codealike
 .redhat
 data
+.sonarlint

@@ -101,7 +101,7 @@ pip install tldr
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 ## npm
-npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
+install_global
 
 
 ## brew

@@ -6,20 +6,6 @@ install_eslint () {
 	npm install eslint eslint-config-airbnb-base eslint-plugin-import eslint-plugin-react
 }
 
-update () {
-	yarn upgrade --latest
-	pushit "updated packages"
-}
-
-update_packages () {
-	git clone $1
-	cd "$(basename "$1" .git)"
-	yarn install
-	yarn upgrade --latest
-	pushit "Updated Packages :package:"
-	cd ..
-}
-
 update_tunnel () {
 	if [ -n $1 ]
 	then
@@ -30,6 +16,22 @@ update_tunnel () {
 	fi
 }
 
+install_global () {
+	npm install -g npm-check 
+	npm install -g azure-functions-core-tools 
+	npm install -g netlify-cli 
+	npm install -g qnm 
+	npm install -g spaceship-prompt
+}
+
+update () {
+	update_ubuntu
+	update_spaceship
+	fnm install --lts
+	fnm use --lts
+	install_global
+	npm-check -gu
+}
 
 update_ubuntu () {
 	sudo apt update
