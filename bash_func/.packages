@@ -22,6 +22,7 @@ install_global () {
 	npm install -g netlify-cli 
 	npm install -g qnm 
 	npm install -g spaceship-prompt
+	npm install -g @azure/static-web-apps-cli
 }
 
 update () {
@@ -29,6 +30,7 @@ update () {
 	update_spaceship
 	fnm install --lts
 	fnm use --lts
+	sudo doppler update
 	install_global
 	npm-check -gu
 }
