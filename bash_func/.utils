@@ -20,3 +20,7 @@ start () {
 	npm start --if-present
 	npm run dev
 }
+
+empty_trash () {
+	rip --decompose
+}

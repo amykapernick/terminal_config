@@ -21,7 +21,17 @@ fontWeights = {
 	'SemiBold': '600',
 	'Bold': '700',
 	'ExtraBold': '800',
-	'Black': '900'
+	'Black': '900',
+	'hairline': '50',
+	'thin': '100',
+	'extralight': '200',
+	'light': '300',
+	'regular': '400',
+	'medium': '500',
+	'semibold': '600',
+	'bold': '700',
+	'extrabold': '800',
+	'black': '900'
 }
 
 def gen_fonts(folder):

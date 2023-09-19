@@ -1,8 +1,8 @@
-alias rm="rm -i"
+alias rm="rip -i"
 alias ssh_fix="fix_ssh"\
 alias dig="dog"
 alias cd="z"
 alias curl="curlie"
 alias man="tldr"
 alias ls="exa"
-alias git-summary='~/git-summary/git-summary'
+alias git-check='~/git-summary/git-summary'
