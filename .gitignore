@@ -52,6 +52,9 @@ caddy.config.json
 .gnupg/trustdb.gpg
 .deque/distinct_id
 .dbus
+.docker
+.codealike
+.aws
 Caddyfile
 .GoSungrow
 .codealike

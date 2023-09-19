@@ -28,6 +28,7 @@ brew install gh
 ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_default
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_default
+gh auth login
 gh ssh-key add ~/.ssh/id_default.pub --title $terminal_name
 
 # Clone terminal config file and add to user folder
@@ -55,6 +56,8 @@ npm set init-version="1.0.0"
 # Install and Setup ZSH and theme
 sudo apt install zsh
 curl -sS https://starship.rs/install.sh | sh
+brew install spaceship
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 
 ## ZSH Plugins and Utils
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
