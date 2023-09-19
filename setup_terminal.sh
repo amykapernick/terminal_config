@@ -74,6 +74,24 @@ source zsh-snap/install.zsh
 curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
             
 
+# 1Password
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+ sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+ sudo tee /etc/apt/sources.list.d/1password.list
+
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+ sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+ sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+
+sudo apt update && sudo apt install 1password-cli
+
+op --version
+
 # Python Utilities
 sudo apt update
 sudo apt install python3-pip
@@ -83,8 +101,11 @@ pip install fire
 pip install tldr
 
 # Other Utilities
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
 ## npm
 npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
+
 
 ## brew
 brew install thefuck
@@ -95,9 +116,18 @@ brew install rs/tap/curlie
 brew install glow
 brew install gnupg
 brew install dopplerhq/cli/doppler
+brew tap azure/functions
+brew install azure-functions-core-tools@4
+sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libatk-bridge2.0-0 libgbm-dev
 
 ## apt
 sudo apt-get install gawk
+
+## Charm
+brew tap charmbracelet/tap && brew install charmbracelet/tap/gum
+brew tap charmbracelet/tap && brew install charmbracelet/tap/charm
+brew install glow
+
 
 ## Problem Utilities
 sudo apt install zoxide ## Must have Ubuntu v 21.04+
