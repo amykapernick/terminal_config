@@ -69,26 +69,24 @@ source zsh-snap/install.zsh
 # sudo mv tunnelto /usr/local/bin/tunnelto
 # tunnelto set-auth --key $tunnelto_key
 # rm tunnelto-linux.tar.gz
-
-## Ngrok
-curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
             
 
-# 1Password
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
- sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+# TODO: Get 1Password working on WSL
+## 1Password
+# curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+#  sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
 
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
- sudo tee /etc/apt/sources.list.d/1password.list
+# echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+#  sudo tee /etc/apt/sources.list.d/1password.list
 
-sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
- sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
- sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+# sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+# curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+#  sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+# sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+# curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+#  sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 
-sudo apt update && sudo apt install 1password-cli
+# sudo apt update && sudo apt install 1password-cli
 
 op --version
 
@@ -107,6 +105,51 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 install_global
 
 
+## apt
+sudo apt-get install ca-certificates
+sudo apt-get install chromium-browser
+sudo apt-get install fonts-liberation
+sudo apt-get install gawk
+sudo apt-get install gconf-service
+sudo apt-get install libappindicator1
+sudo apt-get install libasound2
+sudo apt-get install libatk-bridge2.0-0
+sudo apt-get install libatk1.0-0
+sudo apt-get install libc6
+sudo apt-get install libcairo2
+sudo apt-get install libcups2
+sudo apt-get install libdbus-1-3
+sudo apt-get install libexpat1
+sudo apt-get install libfontconfig1
+sudo apt-get install libgbm-dev
+sudo apt-get install libgcc1
+sudo apt-get install libgconf-2-4
+sudo apt-get install libgdk-pixbuf2.0-0
+sudo apt-get install libglib2.0-0
+sudo apt-get install libgtk-3-0
+sudo apt-get install libnspr4
+sudo apt-get install libnss3
+sudo apt-get install libpango-1.0-0
+sudo apt-get install libpangocairo-1.0-0
+sudo apt-get install libstdc++6
+sudo apt-get install libx11-6
+sudo apt-get install libx11-xcb1
+sudo apt-get install libxcb1
+sudo apt-get install libxcomposite1
+sudo apt-get install libxcursor1
+sudo apt-get install libxdamage1
+sudo apt-get install libxext6
+sudo apt-get install libxfixes3
+sudo apt-get install libxi6
+sudo apt-get install libxrandr2
+sudo apt-get install libxrender1
+sudo apt-get install libxss1
+sudo apt-get install libxtst6
+sudo apt-get install lsb-release
+sudo apt-get install wget
+sudo apt-get install xdg-utils
+
+
 ## brew
 brew install thefuck
 brew install dog
@@ -118,19 +161,11 @@ brew install gnupg
 brew install dopplerhq/cli/doppler
 brew tap azure/functions
 brew install azure-functions-core-tools@4
-
-## apt
-# TODO: combine these two
-# sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libatk-bridge2.0-0 libgbm-dev gawk
-
-# sudo apt-get install gawk gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libatk-bridge2.0-0 libgbm-dev chromium-browser
-
 brew install rm-improved
-
-
-## Charm
-brew tap charmbracelet/tap && brew install charmbracelet/tap/gum
+brew tap charmbracelet/tap
+brew install charmbracelet/tap/gum
 brew install glow
+brew install ngrok/ngrok/ngrok
 
 
 ## Problem Utilities
