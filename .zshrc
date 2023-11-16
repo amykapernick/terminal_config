@@ -32,7 +32,8 @@ ZSH_THEME="spaceship"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# zstyle ':omz:update' frequency 1
+export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -89,6 +90,7 @@ source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 plugins=(
   git
   ssh-agent
+  autoupdate
 )
 
 znap source marlonrichert/zsh-autocomplete
@@ -132,27 +134,10 @@ eval $(thefuck --alias fuck)
 
 . ~/.bash_func
 
-# fnm
-export PATH=/home/amy/.fnm:$PATH
-eval "`fnm env`"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # set DISPLAY variable to the IP automatically assigned to WSL2
-#export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
-#export DISPLAY="`sed -n 's/nameserver //p' /etc/resolv.conf`:0"
 export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
 
-# Automatically start D-Bus
-# sudo /etc/init.d/dbus start &> /dev/null
-
-# fpath=($fpath "/home/amy/.zfunctions")
-
 # # Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
 fpath=($fpath "/home/amy/.zfunctions")
 
 # Set Spaceship ZSH as a prompt
@@ -165,11 +150,9 @@ export PATH
 zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
-
 # fnm
 export PATH=/home/amy/.fnm:$PATH
 eval "`fnm env`"
-fpath=($fpath "/home/amy/.zfunctions")
 fpath=($fpath "/home/amy/.zfunctions")
 source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
 

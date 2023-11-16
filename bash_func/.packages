@@ -6,20 +6,6 @@ install_eslint () {
 	npm install eslint eslint-config-airbnb-base eslint-plugin-import eslint-plugin-react
 }
 
-update () {
-	yarn upgrade --latest
-	pushit "updated packages"
-}
-
-update_packages () {
-	git clone $1
-	cd "$(basename "$1" .git)"
-	yarn install
-	yarn upgrade --latest
-	pushit "Updated Packages :package:"
-	cd ..
-}
-
 update_tunnel () {
 	if [ -n $1 ]
 	then
@@ -30,6 +16,26 @@ update_tunnel () {
 	fi
 }
 
+install_global () {
+	npm install -g npm-check 
+	npm install -g azure-functions-core-tools 
+	npm install -g license
+	npm install -g netlify-cli 
+	npm install -g qnm 
+	npm install -g spaceship-prompt
+	npm install -g @azure/static-web-apps-cli
+	npm install -g doppler
+}
+
+update () {
+	update_ubuntu
+	update_spaceship
+	fnm install --lts
+	fnm use --lts
+	sudo doppler update
+	install_global
+	npm-check -gu
+}
 
 update_ubuntu () {
 	sudo apt update
@@ -43,13 +49,16 @@ check_ubuntu () {
 	lsb_release -a
 }
 
-install_npm () {
-	npm install -g npm-check azure-functions-core-tools license netlify-cli qnm spaceship-prompt doppler
-}
-
 update_node () {
 	fnm install --lts
 	fnm use latest
 	fnm default latest
-	install_npm
+	install_global
+}
+
+update_spaceship() {
+	npm install -g spaceship-prompt
+	NODE_VERSION=$(node -v)
+	echo "Node version: $NODE_VERSION"
+	ln -sfn ~/.fnm/node-versions/$NODE_VERSION/installation/lib/node_modules/spaceship-prompt/spaceship.zsh ~/.zfunctions/prompt_spaceship_setup
 }

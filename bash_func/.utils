@@ -15,3 +15,12 @@ del_files () {
 		find . -regex ".*\.$1$" -delete
 	fi
 }
+
+start () {
+	npm start --if-present
+	npm run dev
+}
+
+empty_trash () {
+	rip --decompose
+}

@@ -4,7 +4,7 @@ refresh () {
 
 check () {
 	cd ~
-	git-summary -d
+	git-check -d
 	npm-check -g
 }
 

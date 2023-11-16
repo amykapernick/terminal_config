@@ -12,7 +12,10 @@ web
 dev
 training
 makerx
+<<<<<<< HEAD
 wordpress
+=======
+>>>>>>> fee581749e0c4f62bcffac9d77775640d3a95f6e
 .ssh_func
 .zsh_history
 .zcompdump*
@@ -59,3 +62,7 @@ MagiskOnWSALocal
 .codealike
 .aws
 .redhat
+Caddyfile
+.GoSungrow
+data
+.sonarlint
