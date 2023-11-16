@@ -171,3 +171,9 @@ export PATH=/home/amy/.fnm:$PATH
 eval "`fnm env`"
 fpath=($fpath "/home/amy/.zfunctions")
 fpath=($fpath "/home/amy/.zfunctions")
+source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
+
+fix_ssh
+
+# LocalWP
+export BROWSER=host_chrome

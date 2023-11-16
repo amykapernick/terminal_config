@@ -42,3 +42,14 @@ update_ubuntu () {
 check_ubuntu () {
 	lsb_release -a
 }
+
+install_npm () {
+	npm install -g npm-check azure-functions-core-tools license netlify-cli qnm spaceship-prompt doppler
+}
+
+update_node () {
+	fnm install --lts
+	fnm use latest
+	fnm default latest
+	install_npm
+}

@@ -11,6 +11,8 @@
 web
 dev
 training
+makerx
+wordpress
 .ssh_func
 .zsh_history
 .zcompdump*
@@ -52,3 +54,8 @@ caddy.config.json
 .gnupg/trustdb.gpg
 .deque/distinct_id
 .dbus
+.docker
+MagiskOnWSALocal
+.codealike
+.aws
+.redhat

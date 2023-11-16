@@ -28,6 +28,7 @@ brew install gh
 ssh-keygen -t ed25519 -C $email -f ~/.ssh/id_default
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_default
+gh auth login
 gh ssh-key add ~/.ssh/id_default.pub --title $terminal_name
 
 # Clone terminal config file and add to user folder
@@ -42,7 +43,7 @@ git pull
 
 # Install Node
 curl -fsSL https://fnm.vercel.app/install | bash
-fnm install latest
+fnm install --lts
 fnm use latest
 
 # Setup Node Init
@@ -101,7 +102,7 @@ pip install tldr
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 ## npm
-npm install -g npm-check azure-functions-core-tools license netlify-cli  qnm spaceship-prompt
+install_npm
 
 
 ## brew
@@ -115,14 +116,12 @@ brew install gnupg
 brew install dopplerhq/cli/doppler
 brew tap azure/functions
 brew install azure-functions-core-tools@4
-sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libatk-bridge2.0-0 libgbm-dev
 
 ## apt
-sudo apt-get install gawk
+sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libatk-bridge2.0-0 libgbm-dev gawk
 
 ## Charm
 brew tap charmbracelet/tap && brew install charmbracelet/tap/gum
-brew tap charmbracelet/tap && brew install charmbracelet/tap/charm
 brew install glow
 
 
