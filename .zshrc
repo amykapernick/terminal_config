@@ -91,6 +91,9 @@ plugins=(
   git
   ssh-agent
   autoupdate
+  docker
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 znap source marlonrichert/zsh-autocomplete
@@ -143,6 +146,8 @@ fpath=($fpath "/home/amy/.zfunctions")
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+# source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
+
 
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH
@@ -154,7 +159,7 @@ zmodload zsh/mapfile
 export PATH=/home/amy/.fnm:$PATH
 eval "`fnm env`"
 fpath=($fpath "/home/amy/.zfunctions")
-source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
+
 
 fix_ssh
 
