@@ -25,6 +25,7 @@ install_global () {
 	npm install -g spaceship-prompt
 	npm install -g @azure/static-web-apps-cli
 	npm install -g doppler
+	npm install -g linkinator	
 }
 
 update () {
