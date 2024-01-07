@@ -51,9 +51,9 @@ check_ubuntu () {
 }
 
 update_node () {
-	fnm install --lts
-	fnm use latest
-	fnm default latest
+	fnm install $1
+	fnm use $1
+	fnm default $1
 	install_global
 }
 
