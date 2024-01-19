@@ -1,5 +1,6 @@
 pushit () {
         git add -A
+		opencommit
         git commit -m "$1"
         git push
 }
