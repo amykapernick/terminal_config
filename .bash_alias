@@ -4,5 +4,5 @@ alias dig="dog"
 alias cd="z"
 alias curl="curlie"
 alias man="tldr"
-alias ls="exa"
+alias ls="eza"
 alias git-check='~/git-summary/git-summary'
