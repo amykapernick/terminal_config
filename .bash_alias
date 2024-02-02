@@ -1,5 +1,5 @@
 alias rm="rip -i"
-alias ssh_fix="fix_ssh"\
+alias ssh_fix="fix_ssh"
 alias dig="dog"
 alias cd="z"
 alias curl="curlie"
