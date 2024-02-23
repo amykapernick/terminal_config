@@ -24,3 +24,8 @@ start () {
 empty_trash () {
 	rip --decompose
 }
+
+gh_ssh () {
+	gh ssh-key add $1 -t=$2
+	gh ssh-key list
+}

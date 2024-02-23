@@ -26,9 +26,9 @@ train () {
 	move_folder "training" $1
 }
 
-# wp () {
-# 	cd /mnt/c/Users/amyka/web
-# }
+makerx () {
+	move_folder "makerx" $1
+}
 
 wp () {
 	move_folder "windows" $1/app/public/wp-content/themes/${2:-$1}
