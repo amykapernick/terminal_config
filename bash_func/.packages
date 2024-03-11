@@ -16,6 +16,10 @@ update_tunnel () {
 	fi
 }
 
+update_doppler () {
+	brew install dopplerhq/cli/doppler
+}
+
 install_global () {
 	npm install -g npm-check 
 	npm install -g azure-functions-core-tools 
@@ -25,7 +29,8 @@ install_global () {
 	npm install -g spaceship-prompt
 	npm install -g @azure/static-web-apps-cli
 	npm install -g doppler
-	npm install -g linkinator	
+	npm install -g linkinator
+	npm install -g concurrently	
 	npm install -g opencommit
 }
 
