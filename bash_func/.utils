@@ -25,7 +25,19 @@ empty_trash () {
 	rip --decompose
 }
 
+new_ssh () {
+	name=$1
+	email=$2
+
+	ssh-keygen -t ed25519 -C $email -f ~/.ssh/$name
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/$name
+}
+
 gh_ssh () {
-	gh ssh-key add $1 -t=$2
+	name=$1
+	terminal=$2
+
+	gh ssh-key add ~/.ssh/$name.pub -t $terminal
 	gh ssh-key list
 }

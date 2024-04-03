@@ -50,6 +50,7 @@ install_brew () {
 	brew install charmbracelet/tap/gum
 	brew install glow
 	brew install ngrok/ngrok/ngrok
+	brew install eza
 }
 
 install_utilities () {
