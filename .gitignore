@@ -64,3 +64,4 @@ Caddyfile
 data
 .sonarlint
 .opencommit
+.psql_history
