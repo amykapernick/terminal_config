@@ -131,9 +131,10 @@ eval "$(starship init zsh)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(zoxide init zsh --no-aliases)"
+# eval "$(zoxide init zsh --no-aliases)"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval $(thefuck --alias fuck)
+# eval "$(fzf --zsh)"
 
 . ~/.bash_func
 
@@ -165,3 +166,6 @@ fix_ssh
 
 # LocalWP
 export BROWSER=host_chrome
+
+eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --no-aliases)"

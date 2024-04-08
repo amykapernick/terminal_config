@@ -114,9 +114,11 @@ install_brew
 
 
 ## Problem Utilities
-sudo apt install zoxide ## Must have Ubuntu v 21.04+
-# curl -sS https://webinstall.dev/zoxide | bash
+### Zoxide
+# sudo apt install zoxide ## Must have Ubuntu v 21.04+
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 # brew install zoxide
+### Exa
 # sudo apt install exa
 # wget -c http://old-releases.ubuntu.com/ubuntu/pool/universe/r/rust-exa/exa_0.9.0-4_amd64.deb
 # sudo apt-get install ./exa_0.9.0-4_amd64.deb
