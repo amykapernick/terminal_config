@@ -61,3 +61,7 @@ Caddyfile
 .redhat
 data
 .sonarlint
+.nuget
+.microsoft
+.ServiceHub
+.vscode-remote-containers

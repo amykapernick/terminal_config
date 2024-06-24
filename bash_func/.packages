@@ -16,6 +16,13 @@ update_tunnel () {
 	fi
 }
 
+update_node () {
+	fnm install $1
+	fnm use $1
+	install_global
+	npm-check -gu
+}
+
 install_global () {
 	npm install -g npm-check 
 	npm install -g azure-functions-core-tools 
@@ -27,10 +34,7 @@ install_global () {
 update () {
 	update_ubuntu
 	update_spaceship
-	fnm install --lts
-	fnm use --lts
-	install_global
-	npm-check -gu
+	update_node
 }
 
 update_ubuntu () {
