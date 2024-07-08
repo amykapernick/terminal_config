@@ -1,5 +1,5 @@
 [user]
-	email = amy.kapernick@makerx.com.au
+	email = amy@kapers.dev
 	name = Amy Kapernick
 	username = amykapernick
 [init]
@@ -11,6 +11,8 @@
 
 [includeIf "gitdir:~/web/"]
 	path=~/web/.gitconfig_include
+[includeIf "gitdir:~/makerx/"]
+	path=~/makerx/.gitconfig
 [pull]
 	rebase = false
 [maintenance]

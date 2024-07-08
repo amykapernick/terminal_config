@@ -91,6 +91,9 @@ plugins=(
   git
   ssh-agent
   autoupdate
+  docker
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 znap source marlonrichert/zsh-autocomplete
@@ -128,9 +131,10 @@ eval "$(starship init zsh)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(zoxide init zsh --no-aliases)"
+# eval "$(zoxide init zsh --no-aliases)"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval $(thefuck --alias fuck)
+# eval "$(fzf --zsh)"
 
 . ~/.bash_func
 
@@ -143,6 +147,8 @@ fpath=($fpath "/home/amy/.zfunctions")
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+# source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
+
 
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH
@@ -154,3 +160,12 @@ zmodload zsh/mapfile
 export PATH=/home/amy/.fnm:$PATH
 eval "`fnm env`"
 fpath=($fpath "/home/amy/.zfunctions")
+
+
+fix_ssh
+
+# LocalWP
+export BROWSER=host_chrome
+
+eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --no-aliases)"
