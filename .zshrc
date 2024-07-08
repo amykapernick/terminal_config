@@ -168,4 +168,4 @@ fpath=($fpath "/home/amy/.zfunctions")
 export BROWSER=host_chrome
 
 eval "$(zoxide init zsh)"
-eval "$(zoxide init zsh --no-aliases)"
+# eval "$(zoxide init zsh --no-aliases)"
