@@ -96,6 +96,7 @@ plugins=(
   zsh-autosuggestions
 )
 
+
 # znap source marlonrichert/zsh-autocomplete
 
 source $ZSH/oh-my-zsh.sh
@@ -104,6 +105,9 @@ SPACESHIP_BATTERY_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
 
 eval "$(starship init zsh)"
+
+eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh --no-aliases)"
 
 # User configuration
 
@@ -167,5 +171,3 @@ fpath=($fpath "/home/amy/.zfunctions")
 # LocalWP
 export BROWSER=host_chrome
 
-eval "$(zoxide init zsh)"
-# eval "$(zoxide init zsh --no-aliases)"
