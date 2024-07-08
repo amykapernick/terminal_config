@@ -51,6 +51,8 @@ install_brew () {
 	brew install glow
 	brew install ngrok/ngrok/ngrok
 	brew install eza
+	brew install zsh-syntax-highlighting
+	brew install zsh-autosuggestions
 }
 
 install_utilities () {

@@ -81,12 +81,12 @@ export UPDATE_ZSH_DAYS=1
 # Add wisely, as too many plugins slow down shell startup.
 # source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 # Download Znap, if it's not there yet.
-[[ -f ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.oh-my-zsh/plugins/zsh-snap
+# [[ -f ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh ]] ||
+#     git clone --depth 1 -- \
+#         https://github.com/marlonrichert/zsh-snap.git ~/.oh-my-zsh/plugins/zsh-snap
 
 source ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh  # Start Znap
-source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
+# source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 plugins=(
   git
   ssh-agent
@@ -96,7 +96,7 @@ plugins=(
   zsh-autosuggestions
 )
 
-znap source marlonrichert/zsh-autocomplete
+# znap source marlonrichert/zsh-autocomplete
 
 source $ZSH/oh-my-zsh.sh
 
@@ -162,7 +162,7 @@ eval "`fnm env`"
 fpath=($fpath "/home/amy/.zfunctions")
 
 
-fix_ssh
+# fix_ssh
 
 # LocalWP
 export BROWSER=host_chrome
