@@ -171,3 +171,4 @@ fpath=($fpath "/home/amy/.zfunctions")
 # LocalWP
 export BROWSER=host_chrome
 
+export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
