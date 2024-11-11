@@ -161,9 +161,17 @@ zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
 # fnm
-export PATH=/home/amy/.fnm:$PATH
-eval "`fnm env`"
+FNM_PATH="/home/amy/.fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+eval "$(XDG_RUNTIME_DIR=/tmp/run/user/$(id -u) fnm env --use-on-cd --shell zsh)"
+
 fpath=($fpath "/home/amy/.zfunctions")
+
+
 
 
 # fix_ssh

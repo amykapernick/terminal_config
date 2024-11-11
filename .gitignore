@@ -69,3 +69,5 @@ data
 .vscode-remote-containers
 .opencommit
 .psql_history
+.opencommit_migrations
+.mozilla/*
