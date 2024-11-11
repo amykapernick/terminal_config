@@ -161,14 +161,21 @@ zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
 # fnm
+## Temporary fix
+sudo mkdir -p /run/user/1000/fnm_multishells
+sudo chown -R 1000 /run/user/1000/
+
+## Regular stuff
 FNM_PATH="/home/amy/.fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
 
-eval "$(XDG_RUNTIME_DIR=/tmp/run/user/$(id -u) fnm env --use-on-cd --shell zsh)"
+## Alternative fix
+# eval "$(XDG_RUNTIME_DIR=/tmp/run/user/$(id -u) fnm env --use-on-cd --shell zsh)"
 
+## Other fnm stuff
 fpath=($fpath "/home/amy/.zfunctions")
 
 
