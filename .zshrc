@@ -162,8 +162,8 @@ zmodload zsh/mapfile
 
 # fnm
 ## Temporary fix
-sudo mkdir -p /run/user/1000/fnm_multishells
-sudo chown -R 1000 /run/user/1000/
+# sudo mkdir -p /run/user/1000/fnm_multishells
+# sudo chown -R 1000 /run/user/1000/
 
 ## Regular stuff
 FNM_PATH="/home/amy/.fnm"
