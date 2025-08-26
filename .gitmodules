@@ -4,6 +4,3 @@
 [submodule "git-summary"]
 	path = git-summary
 	url = https://github.com/MirkoLedda/git-summary.git
-[submodule "zsh-snap"]
-	path = zsh-snap
-	url = https://github.com/marlonrichert/zsh-snap.git

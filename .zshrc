@@ -1,17 +1,28 @@
-source ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh
+# zstyle ':znap:*' repos-dir ~/.zsh-plugins
+# source ~/zsh-snap/znap.zsh
+source ~/.zplug/init.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+
+FNM_PATH="/home/amy/.fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
 
 # Path to your oh-my-zsh installation.
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
 
+
 export ZSH="/home/amy/.oh-my-zsh"
+STARSHIP_CONFIG=~/example/non/default/path/starship.toml
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -85,24 +96,29 @@ export UPDATE_ZSH_DAYS=1
 #     git clone --depth 1 -- \
 #         https://github.com/marlonrichert/zsh-snap.git ~/.oh-my-zsh/plugins/zsh-snap
 
-source ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh  # Start Znap
 # source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 plugins=(
   git
   ssh-agent
   autoupdate
   docker
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+#   zsh-syntax-highlighting
+#   zsh-autosuggestions
 )
 
+# Plugins
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
+
+zplug load
 
 # znap source marlonrichert/zsh-autocomplete
 
 source $ZSH/oh-my-zsh.sh
 
-SPACESHIP_BATTERY_SHOW=false
-SPACESHIP_DOCKER_SHOW=false
+# SPACESHIP_BATTERY_SHOW=false
+# SPACESHIP_DOCKER_SHOW=false
 
 eval "$(starship init zsh)"
 
@@ -149,13 +165,12 @@ export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
 fpath=($fpath "/home/amy/.zfunctions")
 
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+# autoload -U promptinit; promptinit
+# prompt spaceship
 # source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
 
 
-PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
-export PATH
+
 
 zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
@@ -166,16 +181,14 @@ zmodload zsh/mapfile
 # sudo chown -R 1000 /run/user/1000/
 
 ## Regular stuff
-FNM_PATH="/home/amy/.fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
+
 
 ## Alternative fix
 # eval "$(XDG_RUNTIME_DIR=/tmp/run/user/$(id -u) fnm env --use-on-cd --shell zsh)"
 
 ## Other fnm stuff
+
+
 fpath=($fpath "/home/amy/.zfunctions")
 
 
