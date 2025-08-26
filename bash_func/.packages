@@ -31,7 +31,6 @@ install_global () {
 	npm install -g doppler
 	npm install -g linkinator
 	npm install -g concurrently	
-	npm install -g opencommit
 }
 
 install_brew () {
@@ -103,6 +102,7 @@ install_utilities () {
 	sudo apt-get install xdg-utils
 	sudo apt install php-cli
 	sudo apt install unzip
+	sudo apt install zoxide
 }
 
 update () {
@@ -115,7 +115,6 @@ update () {
 	install_utilities
 	install_brew
 	install_global
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 	npm-check -gu
 }
 
