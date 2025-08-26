@@ -6,6 +6,8 @@ export PATH=/bin:/usr/bin:/usr/local/bin:$PATH
 # add cargo binaries (needed for zoxide)
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export PATH="$PATH:/usr/local/bin"  # if op binary is in /usr/local/bin
+
 # fnm (Node version manager)
 FNM_PATH="/home/amy/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -71,3 +73,6 @@ export BROWSER=host_chrome
 # zsh modules
 zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
+
+# 1Password CLI
+eval $(op signin --account makerx)
