@@ -1,202 +1,73 @@
-# zstyle ':znap:*' repos-dir ~/.zsh-plugins
-# source ~/zsh-snap/znap.zsh
-source ~/.zplug/init.zsh
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+# -----------------------------
+# PATH setup
+# -----------------------------
+export PATH=/bin:/usr/bin:/usr/local/bin:$PATH
 
-FNM_PATH="/home/amy/.fnm"
+# add cargo binaries (needed for zoxide)
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# fnm (Node version manager)
+FNM_PATH="$HOME/.fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env)"
 fi
 
-# Path to your oh-my-zsh installation.
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
-
-
-export ZSH="/home/amy/.oh-my-zsh"
-STARSHIP_CONFIG=~/example/non/default/path/starship.toml
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="spaceship"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 1
-export UPDATE_ZSH_DAYS=1
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# TMUX Config
-#ZSH_TMUX_AUTOSTART=true
-#ZSH_TMUX_AUTOCONNECT=false
-# ZSH_TMUX_CONFIG=~/.tmux.conf
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
-# Download Znap, if it's not there yet.
-# [[ -f ~/.oh-my-zsh/plugins/zsh-snap/znap.zsh ]] ||
-#     git clone --depth 1 -- \
-#         https://github.com/marlonrichert/zsh-snap.git ~/.oh-my-zsh/plugins/zsh-snap
-
-# source ~/.oh-my-zsh/plugins/ssh-agent/ssh-agent.plugin.zsh
-plugins=(
-  git
-  ssh-agent
-  autoupdate
-  docker
-#   zsh-syntax-highlighting
-#   zsh-autosuggestions
-)
-
-# Plugins
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
-
-zplug load
-
-# znap source marlonrichert/zsh-autocomplete
-
+# -----------------------------
+# oh-my-zsh base
+# -----------------------------
+export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
-# SPACESHIP_BATTERY_SHOW=false
-# SPACESHIP_DOCKER_SHOW=false
+# -----------------------------
+# zplug plugin manager
+# -----------------------------
+source ~/.zplug/init.zsh
 
+# oh-my-zsh built-in plugins via zplug
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
+
+# third-party plugins via zplug
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-autosuggestions"
+zplug "TamCore/autoupdate-oh-my-zsh-plugins"
+
+# install/load plugins
+if ! zplug check --verbose; then
+  zplug install
+fi
+zplug load
+
+# -----------------------------
+# Prompt & helpers
+# -----------------------------
+STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh)"
-# eval "$(zoxide init zsh --no-aliases)"
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# eval "$(zoxide init zsh --no-aliases)"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval $(thefuck --alias fuck)
-# eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"   # uncomment if you want fzf integration
 
+# -----------------------------
+# Misc configs
+# -----------------------------
+
+# Custom functions
 . ~/.bash_func
 
 # set DISPLAY variable to the IP automatically assigned to WSL2
-export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
+export DISPLAY=$(ip route | awk '/^default/{print $3}'):0.0
 
-# # Set Spaceship ZSH as a prompt
-fpath=($fpath "/home/amy/.zfunctions")
+# Linuxbrew paths (already added above, but keeping MongoDB separately)
+export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
 
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
-# source /home/linuxbrew/.linuxbrew/opt/spaceship/spaceship.zsh
-
-
-
-
-zmodload -ap zsh/mapfile mapfile
-zmodload zsh/mapfile
-
-# fnm
-## Temporary fix
-# sudo mkdir -p /run/user/1000/fnm_multishells
-# sudo chown -R 1000 /run/user/1000/
-
-## Regular stuff
-
-
-## Alternative fix
-# eval "$(XDG_RUNTIME_DIR=/tmp/run/user/$(id -u) fnm env --use-on-cd --shell zsh)"
-
-## Other fnm stuff
-
-
-fpath=($fpath "/home/amy/.zfunctions")
-
-
-
-
-# fix_ssh
-
-# LocalWP
+# LocalWP browser override
 export BROWSER=host_chrome
 
-export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
+# zsh modules
+zmodload -ap zsh/mapfile mapfile
+zmodload zsh/mapfile
