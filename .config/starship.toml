@@ -1,0 +1,142 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch$git_state$git_status\
+$nodejs\
+$python\
+$ruby\
+$package\
+$docker\
+$venv\
+$git_metrics\
+$jobs\
+$battery\
+$time\
+$character
+"""
+
+# Username
+[username]
+show_always = false
+style_user = "#318ce7 bold"
+style_root = "#e53f51 bold"
+
+# Hostname (SSH only)
+[hostname]
+ssh_only = true
+style = "#9440a0"
+
+# Current directory
+[directory]
+truncation_length = 3
+style = "#7561c1 bold"
+read_only = "🔒"
+
+# Git branch
+[git_branch]
+symbol = "\uE0A0 "     # Nerd Font branch
+style = "#cb5699 bold"
+
+# Git state (rebase/merge)
+[git_state]
+rebase = "REBASING"
+merge = "MERGING"
+style = "#f78d2b"
+
+# Git status
+[git_status]
+conflicted = "\u26A0"              # ⚠
+ahead = "\u2191"                   # ↑
+behind = "\u2193"                  # ↓
+diverged = "\u2194"                # ↔
+untracked = "?"
+staged = "+"
+deleted = "\u2716"                 # ✖
+renamed = "\u279C"                 # ➜
+modified = "\u270E"                # ✎
+style = "#e53f51"
+format = "([$all_status]($style))"
+
+# Node.js version
+[nodejs]
+format = "[$symbol($version )]($style)"
+symbol = "\uE718 "                      # Node icon
+style = "white on #64ad66 bold"
+
+# Python version
+[python]
+format = "[$symbol($version )]($style)"
+symbol = "\uE73C "                      # Python icon
+style = "white on #ffce03 bold"
+
+# Ruby version
+[ruby]
+format = "[$symbol($version )]($style)"
+symbol = "\uE73E "                      # Ruby icon
+style = "white on #cb5699 bold"
+
+# Package manager (npm/yarn)
+[package]
+format = "[$symbol($version )]($style)"
+symbol = "\uE7C5 "                      # Box/package icon
+style = "white on #318ce7 bold"
+
+# Docker
+[custom.docker]
+command = "docker --version"
+when = "which docker"
+format = "[$symbol($version )]($style)"
+symbol = "\uF308 "                      # Docker whale
+style = "white on #318ce7 bold"
+disabled = false
+
+# Python virtual environment
+[custom.venv]
+command = "basename \"$VIRTUAL_ENV\""
+when = "[[ -n \"$VIRTUAL_ENV\" ]]"
+format = "[$symbol($name )]($style)"
+symbol = "\uE73D "                    # Virtualenv icon
+style = "white on #ffce03 bold"
+disabled = false
+
+# Git metrics
+[git_metrics]
+format = "⇡$ahead ⇣$behind ⚡$staged ✘$deleted ! $modified"
+disabled = false
+
+# Jobs
+[jobs]
+symbol = "\u2699 " # ⚙
+style = "#64ad66"
+
+# Battery
+[battery]
+full_symbol = "\uF240"                             # Battery full
+charging_symbol = "⚡"
+discharging_symbol = "\u2620"
+format = "[$symbol$percentage](white on #318ce7) "
+disabled = false
+
+# Command duration (shows if >5s)
+[cmd_duration]
+min_time = 5000
+style = "bold #ffce03"
+
+# Time
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%I:%M %p"
+style = "#9440a0"
+
+# Prompt character
+[character]
+success_symbol = "➜ "
+error_symbol = "✗ "
+vicmd_symbol = "❮ "
+format = "[$success_symbol](bold #64ad66) [$error_symbol](bold #e53f51) "
