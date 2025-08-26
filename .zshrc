@@ -14,33 +14,6 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 # -----------------------------
-# ssh setup
-# -----------------------------
-SSH_ENV="$HOME/.ssh/agent-environment"
-
-function start_agent {
-    echo "Starting ssh-agent..."
-    /usr/bin/ssh-agent | tee $SSH_ENV > /dev/null
-    chmod 600 $SSH_ENV
-    . $SSH_ENV > /dev/null
-    # Add all private keys in ~/.ssh if none loaded
-    ssh-add -l &>/dev/null || for key in ~/.ssh/id_*; do
-        [ -f "$key" ] && ssh-add "$key" &>/dev/null
-    done
-}
-
-# Source existing agent environment if present
-if [ -f "$SSH_ENV" ]; then
-    . "$SSH_ENV" > /dev/null
-    # If agent not running, start a new one
-    if ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
-        start_agent
-    fi
-else
-    start_agent
-fi
-
-# -----------------------------
 # oh-my-zsh base
 # -----------------------------
 export ZSH="$HOME/.oh-my-zsh"
@@ -92,4 +65,4 @@ zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
 # 1Password CLI
-eval $(op signin --account makerx)
+# eval $(op signin)
