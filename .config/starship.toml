@@ -15,14 +15,17 @@ $docker\
 $venv\
 $git_metrics\
 $jobs\
-$battery\
-$time\
 $character
+"""
+
+right_format = """
+$battery\
+$time
 """
 
 # Username
 [username]
-show_always = true
+show_always = false
 style_user = "#318ce7 bold"
 style_root = "#e53f51 bold"
 
