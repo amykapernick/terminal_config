@@ -2,17 +2,42 @@
 # PATH setup
 # -----------------------------
 export PATH=/bin:/usr/bin:/usr/local/bin:$PATH
-
-# add cargo binaries (needed for zoxide)
-export PATH="$HOME/.cargo/bin:$PATH"
-
-export PATH="$PATH:/usr/local/bin"  # if op binary is in /usr/local/bin
+export PATH="$HOME/.cargo/bin:$PATH"        # for zoxide
+export PATH="$PATH:/usr/local/bin"          # for op CLI
+export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
 
 # fnm (Node version manager)
 FNM_PATH="/home/amy/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env)"
+fi
+
+# -----------------------------
+# ssh setup
+# -----------------------------
+SSH_ENV="$HOME/.ssh/agent-environment"
+
+function start_agent {
+    echo "Starting ssh-agent..."
+    /usr/bin/ssh-agent | tee $SSH_ENV > /dev/null
+    chmod 600 $SSH_ENV
+    . $SSH_ENV > /dev/null
+    # Add all private keys in ~/.ssh if none loaded
+    ssh-add -l &>/dev/null || for key in ~/.ssh/id_*; do
+        [ -f "$key" ] && ssh-add "$key" &>/dev/null
+    done
+}
+
+# Source existing agent environment if present
+if [ -f "$SSH_ENV" ]; then
+    . "$SSH_ENV" > /dev/null
+    # If agent not running, start a new one
+    if ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
+        start_agent
+    fi
+else
+    start_agent
 fi
 
 # -----------------------------
@@ -57,17 +82,9 @@ eval $(thefuck --alias fuck)
 # -----------------------------
 # Misc configs
 # -----------------------------
-
-# Custom functions
 . ~/.bash_func
 
-# set DISPLAY variable to the IP automatically assigned to WSL2
 export DISPLAY=$(ip route | awk '/^default/{print $3}'):0.0
-
-# Linuxbrew paths (already added above, but keeping MongoDB separately)
-export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
-
-# LocalWP browser override
 export BROWSER=host_chrome
 
 # zsh modules
