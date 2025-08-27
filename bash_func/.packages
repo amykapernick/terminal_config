@@ -31,7 +31,6 @@ install_global () {
 	npm install -g doppler
 	npm install -g linkinator
 	npm install -g concurrently	
-	npm install -g opencommit
 }
 
 install_brew () {
@@ -53,12 +52,15 @@ install_brew () {
 	brew install eza
 	brew install zsh-syntax-highlighting
 	brew install zsh-autosuggestions
+	brew install --cask font-powerline-symbols
 }
 
 install_utilities () {
 	sudo apt-get install ca-certificates
 	sudo apt-get install chromium-browser
+	sudo apt install docker-compose
 	sudo apt-get install fonts-liberation
+	sudo apt-get install fonts-powerline
 	sudo apt-get install gawk
 	sudo apt-get install gconf-service
 	sudo apt-get install libappindicator1
@@ -100,18 +102,19 @@ install_utilities () {
 	sudo apt-get install xdg-utils
 	sudo apt install php-cli
 	sudo apt install unzip
+	sudo apt install zoxide
 }
 
 update () {
 	update_ubuntu
-	update_spaceship
+	update_prompt
+	update_plugins
 	fnm install --lts
 	fnm use --lts
 	sudo doppler update
 	install_utilities
 	install_brew
 	install_global
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 	npm-check -gu
 }
 
@@ -134,9 +137,13 @@ update_node () {
 	install_global
 }
 
-update_spaceship() {
-	npm install -g spaceship-prompt
-	NODE_VERSION=$(node -v)
-	echo "Node version: $NODE_VERSION"
-	ln -sfn ~/.fnm/node-versions/$NODE_VERSION/installation/lib/node_modules/spaceship-prompt/spaceship.zsh ~/.zfunctions/prompt_spaceship_setup
+update_prompt () {
+	sudo apt-get update && sudo apt-get install --only-upgrade zsh -y
+	omz update
+	starship update
+}
+
+update_plugins () {
+	zplug update
+	zplug clean --force
 }

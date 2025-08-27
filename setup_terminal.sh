@@ -122,3 +122,22 @@ curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | 
 # sudo apt install exa
 # wget -c http://old-releases.ubuntu.com/ubuntu/pool/universe/r/rust-exa/exa_0.9.0-4_amd64.deb
 # sudo apt-get install ./exa_0.9.0-4_amd64.deb
+
+
+
+## 1Password CLI
+### Install 1Password on linux
+# curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+
+### Install 1Password CLI
+# curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+#   sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg && \
+#   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | \
+#   sudo tee /etc/apt/sources.list.d/1password.list && \
+#   sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/ && \
+#   curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+#   sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol && \
+#   sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22 && \
+#   curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+#   sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg && \
+#   sudo apt update && sudo apt install 1password-cli

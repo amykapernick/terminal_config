@@ -1,0 +1,392 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch$git_state$git_status\
+$package\
+$docker\
+$venv\
+$git_metrics\
+$jobs\
+$character
+"""
+
+right_format = """
+$c\
+$cpp\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$conda\
+$pixi\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$crystal\
+$custom\
+$status\
+$os\
+$battery\
+$time
+"""
+
+# Username
+[username]
+show_always = false
+style_user = "#318ce7 bold"
+style_root = "#e53f51 bold"
+
+# Hostname (SSH only)
+[hostname]
+ssh_only = true
+style = "#9440a0"
+
+# Current directory
+[directory]
+truncation_length = 3
+style = "#7561c1 bold"
+read_only = "🔒"
+
+# Git branch
+[git_branch]
+symbol = "\uE0A0 "     # Nerd Font branch
+style = "#cb5699 bold"
+
+# Git state (rebase/merge)
+[git_state]
+rebase = "REBASING"
+merge = "MERGING"
+style = "#f78d2b"
+
+# Node.js version
+[nodejs]
+format = '\[[$symbol($version)]($style)\]'
+symbol = "\uE718 "                         # Node icon
+style = "white on #64ad66 bold"
+
+# Python version
+[python]
+format = "[$symbol($version )]($style)"
+symbol = "\uE73C "                      # Python icon
+style = "white on #ffce03 bold"
+
+# Ruby version
+[ruby]
+format = "[$symbol($version )]($style)"
+symbol = "\uE73E "                      # Ruby icon
+style = "white on #cb5699 bold"
+
+# Package manager (npm/yarn)
+[package]
+format = "[$symbol($version )]($style)"
+symbol = "\uE7C5 "                      # Box/package icon
+style = "white on #318ce7 bold"
+
+# Docker
+[docker_context]
+format = "[$symbol($version )]($style)"
+symbol = "\uf308 "                      # Docker whale
+style = "white on #318ce7 bold"
+disabled = false
+
+# Python virtual environment
+[custom.venv]
+command = "basename \"$VIRTUAL_ENV\""
+when = "[[ -n \"$VIRTUAL_ENV\" ]]"
+format = "[$symbol($name )]($style)"
+symbol = "\uE73D "                    # Virtualenv icon
+style = "white on #ffce03 bold"
+disabled = false
+
+# Git metrics
+[git_metrics]
+format = '([▴$added]($added_style)) ([▿$deleted]($deleted_style)) '
+added_style = 'italic #64ad66'                                      # green
+deleted_style = 'italic #e53f51'                                    # red
+ignore_submodules = true
+disabled = false
+
+# Git status
+[git_status]
+style = "bold italic #318ce7"                                                                        # bright blue
+format = "([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style)) "
+conflicted = "\u25CA\u25E6"                                                                          # ◪◦
+ahead = "▴│[${count}]│"                                                                              # ▴│[count]│
+behind = "▿│[${count}]│"                                                                             # ▿│[count]│
+diverged = "◇ ▴┤[${ahead_count}]│▿┤[${behind_count}]│"
+untracked = "\u25CB\u25E6"                                                                           # ◌◦
+stashed = "\u25C3\u25C8"                                                                             # ◃◈
+modified = "\u25CF\u25E6"                                                                            # ●◦
+staged = "▪┤[${count}]│"
+renamed = "\u25CE\u25E6"                                                                             # ◎◦
+deleted = "\u2715"                                                                                   # ✕
+
+# Jobs
+[jobs]
+symbol = "\u2699 " # ⚙
+style = "#64ad66"
+
+# Battery
+[battery]
+full_symbol = "\uF240"                             # Battery full
+charging_symbol = "⚡"
+discharging_symbol = "\u2620"
+format = "[$symbol$percentage](white on #318ce7) "
+disabled = false
+
+# Command duration (shows if >5s)
+[cmd_duration]
+min_time = 5000
+style = "bold #ffce03"
+
+# Time
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%I:%M %p"
+style = "#9440a0"
+
+# Prompt character
+[character]
+success_symbol = "➜ "
+error_symbol = "✗ "
+vicmd_symbol = "❮ "
+format = "[$success_symbol](bold #64ad66) [$error_symbol](bold #e53f51) "
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[bun]
+symbol = " "
+
+[c]
+symbol = " "
+
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[deno]
+symbol = " "
+
+# [directory]
+# read_only = " 󰌾"
+
+# [docker_context]
+# symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[gcloud]
+symbol = "  "
+
+# [git_branch]
+# symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+# [hostname]
+# ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+# [nodejs]
+# symbol = " "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = "\uf0548 "
+Unknown = "\ueabc "
+Void = " "
+Windows = "󰍲 "
+
+# [package]
+# symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[pixi]
+symbol = "󰏗 "
+
+# [python]
+# symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+# [ruby]
+# symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "
