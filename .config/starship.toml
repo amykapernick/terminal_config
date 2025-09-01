@@ -1,5 +1,5 @@
 # Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+# "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
 format = """
@@ -87,17 +87,18 @@ style_root = "#e53f51 bold"
 [hostname]
 ssh_only = true
 style = "#9440a0"
+ssh_symbol = " "
 
 # Current directory
 [directory]
 truncation_length = 3
-style = "#7561c1 bold"
-read_only = "🔒"
+style = "#9B8ADC bold"
+read_only = "󰌾"
 
 # Git branch
 [git_branch]
-symbol = "\uE0A0 "     # Nerd Font branch
-style = "#cb5699 bold"
+symbol = " "          # Nerd Font branch
+style = "#D976AF bold"
 
 # Git state (rebase/merge)
 [git_state]
@@ -105,16 +106,10 @@ rebase = "REBASING"
 merge = "MERGING"
 style = "#f78d2b"
 
-# Node.js version
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-symbol = "\uE718 "                         # Node icon
-style = "white on #64ad66 bold"
-
 # Python version
 [python]
 format = "[$symbol($version )]($style)"
-symbol = "\uE73C "                      # Python icon
+symbol = " "                           # Python icon
 style = "white on #ffce03 bold"
 
 # Ruby version
@@ -126,13 +121,13 @@ style = "white on #cb5699 bold"
 # Package manager (npm/yarn)
 [package]
 format = "[$symbol($version )]($style)"
-symbol = "\uE7C5 "                      # Box/package icon
-style = "white on #318ce7 bold"
+symbol = "󰏗 "                           # Box/package icon
+style = "#318ce7 bold"
 
 # Docker
 [docker_context]
 format = "[$symbol($version )]($style)"
-symbol = "\uf308 "                      # Docker whale
+symbol = " "                           # Docker whale
 style = "white on #318ce7 bold"
 disabled = false
 
@@ -148,25 +143,25 @@ disabled = false
 # Git metrics
 [git_metrics]
 format = '([▴$added]($added_style)) ([▿$deleted]($deleted_style)) '
-added_style = 'italic #64ad66'                                      # green
-deleted_style = 'italic #e53f51'                                    # red
+added_style = 'italic #64ad66'
+deleted_style = 'italic #e53f51'
 ignore_submodules = true
 disabled = false
 
 # Git status
 [git_status]
-style = "bold italic #318ce7"                                                                        # bright blue
+style = "bold italic #318ce7"
 format = "([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style)) "
-conflicted = "\u25CA\u25E6"                                                                          # ◪◦
-ahead = "▴│[${count}]│"                                                                              # ▴│[count]│
-behind = "▿│[${count}]│"                                                                             # ▿│[count]│
+conflicted = "◪◦"
+ahead = "▴│[${count}]│"
+behind = "▿│[${count}]│"
 diverged = "◇ ▴┤[${ahead_count}]│▿┤[${behind_count}]│"
-untracked = "\u25CB\u25E6"                                                                           # ◌◦
-stashed = "\u25C3\u25C8"                                                                             # ◃◈
-modified = "\u25CF\u25E6"                                                                            # ●◦
+untracked = "◌◦"
+stashed = "◃◈"
+modified = "●◦"
 staged = "▪┤[${count}]│"
-renamed = "\u25CE\u25E6"                                                                             # ◎◦
-deleted = "\u2715"                                                                                   # ✕
+renamed = "◎◦"
+deleted = "✕"
 
 # Jobs
 [jobs]
@@ -175,9 +170,9 @@ style = "#64ad66"
 
 # Battery
 [battery]
-full_symbol = "\uF240"                             # Battery full
-charging_symbol = "⚡"
-discharging_symbol = "\u2620"
+full_symbol = ""                                  # Battery full
+charging_symbol = "󰂉"
+discharging_symbol = "󰂍"
 format = "[$symbol$percentage](white on #318ce7) "
 disabled = false
 
@@ -196,12 +191,12 @@ style = "#9440a0"
 # Prompt character
 [character]
 success_symbol = "➜ "
-error_symbol = "✗ "
+error_symbol = " "
 vicmd_symbol = "❮ "
 format = "[$success_symbol](bold #64ad66) [$error_symbol](bold #e53f51) "
 
 [aws]
-symbol = "  "
+symbol = " "
 
 [buf]
 symbol = " "
@@ -230,12 +225,6 @@ symbol = " "
 [deno]
 symbol = " "
 
-# [directory]
-# read_only = " 󰌾"
-
-# [docker_context]
-# symbol = " "
-
 [elixir]
 symbol = " "
 
@@ -250,9 +239,6 @@ symbol = " "
 
 [gcloud]
 symbol = "  "
-
-# [git_branch]
-# symbol = " "
 
 [git_commit]
 tag_symbol = '  '
@@ -271,9 +257,6 @@ symbol = " "
 
 [hg_branch]
 symbol = " "
-
-# [hostname]
-# ssh_symbol = " "
 
 [java]
 symbol = " "
@@ -299,8 +282,11 @@ symbol = "󰆥 "
 [nix_shell]
 symbol = " "
 
-# [nodejs]
-# symbol = " "
+[nodejs]
+format = '[$symbol($version )]($style)'
+symbol = " "
+style = "bold #64ad66"
+not_capable_style = "bold #e53f51"
 
 [ocaml]
 symbol = " "
@@ -390,3 +376,28 @@ symbol = " "
 
 [gradle]
 symbol = " "
+
+
+[palettes.default]
+purple_bright = '#9440a0'
+purple = '#7561c1'
+navy = '#364c93'
+blue = '#318ce7'
+green = '#64ad66'
+green_dark = '#2F6A4D'
+red = '#e53f51'
+pink = '#cb5699'
+orange = '#f78d2b'
+yellow = '#ffce03'
+
+[palettes.dark]
+purple_bright = '#CE76DB'
+purple = '#9B8ADC'
+navy = '#7294FA'
+blue = '#4A9AEA'
+green = '#64ad66'
+red = '#FF697C'
+pink = '#D976AF'
+orange = '#f78d2b'
+yellow = '#ffce03'
+green_dark = '#409169'
