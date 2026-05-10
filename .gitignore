@@ -70,3 +70,13 @@ data
 .copilot
 .net
 .azcopy
+.nuget
+.microsoft
+.ServiceHub
+.vscode-remote-containers
+.opencommit
+.psql_history
+.opencommit_migrations
+.mozilla/*
+.vscode-remote-containers
+.docker
