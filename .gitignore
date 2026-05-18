@@ -73,3 +73,5 @@ data
 .mozilla/*
 .vscode-remote-containers
 .docker
+.copilot
+snap
