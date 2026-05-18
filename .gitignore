@@ -63,6 +63,13 @@ Caddyfile
 .GoSungrow
 data
 .sonarlint
+.opencommit
+.vscode-remote-containers
+.agents
+.aitk
+.copilot
+.net
+.azcopy
 .nuget
 .microsoft
 .ServiceHub

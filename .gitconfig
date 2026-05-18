@@ -6,6 +6,7 @@
 	defaultBranch = prod
 [push]
 	default = current
+	autoSetupRemote = true
 [core]
 	excludesfile = /home/amy/.gitignore_global
 
