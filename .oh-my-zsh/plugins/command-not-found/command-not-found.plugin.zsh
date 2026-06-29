@@ -3,6 +3,7 @@
 for file (
   # Arch Linux. Must have pkgfile installed: https://wiki.archlinux.org/title/Zsh#pkgfile_"command_not_found"_handler
   /usr/share/doc/pkgfile/command-not-found.zsh
+<<<<<<< HEAD
   # Void Linux: https://codeberg.org/classabbyamp/xbps-command-not-found
   /usr/share/zsh/plugins/xbps-command-not-found/xbps-command-not-found.zsh
   # Homebrew: https://github.com/Homebrew/brew/blob/main/docs/Command-Not-Found.md
@@ -10,6 +11,13 @@ for file (
   /usr/local/Homebrew/Library/Homebrew/command-not-found/handler.sh
   /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/command-not-found/handler.sh
   # Old homebrew implementation
+=======
+  # Homebrew: https://github.com/Homebrew/homebrew-command-not-found
+  /opt/homebrew/Library/Homebrew/command-not-found/handler.sh
+  /usr/local/Homebrew/Library/Homebrew/command-not-found/handler.sh
+  /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/command-not-found/handler.sh
+	# Old homebrew implementation
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
   /opt/homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.sh
   /usr/local/Homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.sh
   /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.sh

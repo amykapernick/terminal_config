@@ -1,6 +1,10 @@
 # VS Code
 
+<<<<<<< HEAD
 This plugin provides useful aliases to simplify interaction between the command line and VS Code, VSCodium, or Cursor.
+=======
+This plugin provides useful aliases to simplify the interaction between the command line and VS Code, VSCodium, or Cursor editor.
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
 
 To start using it, add the `vscode` plugin to your `plugins` array in `~/.zshrc`:
 
@@ -14,10 +18,17 @@ This plugin requires one of the supported editors to be installed and its execut
 
 You can install one of the following:
 
+<<<<<<< HEAD
 - VS Code (`code`)
 - VS Code Insiders (`code-insiders`)
 - VSCodium (`codium`)
 - Cursor (`cursor`)
+=======
+- VS Code (code)
+- VS Code Insiders (code-insiders)
+- VSCodium (codium)
+- Cursor (cursor)
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
 
 ### macOS
 
@@ -33,7 +44,15 @@ open the Command Palette with `F1` or `Shift+Cmd+P`, then search for the followi
 
 > Shell Command: Install 'codium' command in PATH
 
+<<<<<<< HEAD
 For Cursor, open the Command Palette with `F1` or `Cmd+Shift+P`, then search for the following command:
+=======
+For Cursor, open the Command Palette via (F1 or ⌘⇧P) and type shell command to find the Shell Command:
+
+> Shell Command: Install 'cursor' command in PATH
+
+## Using multiple flavours
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
 
 > Shell Command: Install 'cursor' command in PATH
 
@@ -46,9 +65,15 @@ and `plugins=()` lines. This makes the plugin use your manually defined executab
 ```zsh
 ZSH_THEME=...
 
+<<<<<<< HEAD
 # Choose one of `code`, `code-insiders`, `codium`, or `cursor`.
 # The following line makes the plugin open VS Code Insiders.
 # Invalid entries are ignored and no aliases are added.
+=======
+# Choose between one [code, code-insiders, codium, or cursor]
+# The following line will make the plugin to open VS Code Insiders
+# Invalid entries will be ignored, no aliases will be added
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
 VSCODE=code-insiders
 
 plugins=(... vscode)

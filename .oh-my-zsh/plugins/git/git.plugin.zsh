@@ -273,7 +273,11 @@ alias gprav='git pull --rebase --autostash -v'
 
 function ggu() {
   local b
+<<<<<<< HEAD
   [[ $# != 1 ]] && b="$(git_current_branch)"
+=======
+  [[ "$#" != 1 ]] && b="$(git_current_branch)"
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
   git pull --rebase origin "${b:-$1}"
 }
 compdef _git ggu=git-pull
@@ -289,7 +293,11 @@ function ggl() {
     git pull origin "${*}"
   else
     local b
+<<<<<<< HEAD
     [[ $# == 0 ]] && b="$(git_current_branch)"
+=======
+    [[ "$#" == 0 ]] && b="$(git_current_branch)"
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
     git pull origin "${b:-$1}"
   fi
 }
@@ -302,7 +310,11 @@ alias gpd='git push --dry-run'
 
 function ggf() {
   local b
+<<<<<<< HEAD
   [[ $# != 1 ]] && b="$(git_current_branch)"
+=======
+  [[ "$#" != 1 ]] && b="$(git_current_branch)"
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
   git push --force origin "${b:-$1}"
 }
 compdef _git ggf=git-push
@@ -314,7 +326,11 @@ is-at-least 2.30 "$git_version" \
 
 function ggfl() {
   local b
+<<<<<<< HEAD
   [[ $# != 1 ]] && b="$(git_current_branch)"
+=======
+  [[ "$#" != 1 ]] && b="$(git_current_branch)"
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
   git push --force-with-lease origin "${b:-$1}"
 }
 compdef _git ggfl=git-push
@@ -333,7 +349,11 @@ function ggp() {
     git push origin "${*}"
   else
     local b
+<<<<<<< HEAD
     [[ $# == 0 ]] && b="$(git_current_branch)"
+=======
+    [[ "$#" == 0 ]] && b="$(git_current_branch)"
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
     git push origin "${b:-$1}"
   fi
 }

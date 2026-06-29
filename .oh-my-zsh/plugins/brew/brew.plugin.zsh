@@ -64,7 +64,10 @@ alias bo='brew outdated'
 alias br='brew reinstall'
 alias brewp='brew pin'
 alias brewsp='brew list --pinned'
+<<<<<<< HEAD
 alias brh='brew reinstall --HEAD'
+=======
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
 alias bs='brew search'
 alias bsl='brew services list'
 alias bsoff='brew services stop'

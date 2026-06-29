@@ -63,6 +63,13 @@ Caddyfile
 .GoSungrow
 data
 .sonarlint
+.opencommit
+.vscode-remote-containers
+.agents
+.aitk
+.copilot
+.net
+.azcopy
 .nuget
 .microsoft
 .ServiceHub
@@ -73,6 +80,7 @@ data
 .mozilla/*
 .vscode-remote-containers
 .docker
+<<<<<<< HEAD
 .claude.json
 .agents/.skill-lock.json
 .agents/skills/microsoft-foundry/.gitignore
@@ -702,3 +710,7 @@ data
 .claude/shell-snapshots/snapshot-zsh-1780643217328-tuc75g.sh
 .claude/shell-snapshots/snapshot-zsh-1781000674421-sha7j2.sh
 .copilot/ide/0bdb1c32-549f-4384-a715-d28ccd4bed31.lock
+=======
+.copilot
+snap
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43

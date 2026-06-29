@@ -48,7 +48,10 @@ ensures the `bdr` alias runs without warnings.
 | `brewp`  | `brew pin`                              | Pin a specified formula so that it's not upgraded.                    |
 | `brews`  | _function_                              | List installed leaf formulae with their dependencies, then casks.     |
 | `brewsp` | `brew list --pinned`                    | List pinned formulae, or show the version of a given formula.         |
+<<<<<<< HEAD
 | `brh`    | `brew reinstall --HEAD`                 | Reinstall a formula with --HEAD                                       |
+=======
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
 | `bs`     | `brew search`                           | Perform a substring search of cask tokens and formula names for text. |
 | `bsl`    | `brew services list`                    | List all running services.                                            |
 | `bsoff`  | `brew services stop`                    | Stop the service and unregister it from launching at login (or boot). |

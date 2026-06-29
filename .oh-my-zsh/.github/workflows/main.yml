@@ -24,12 +24,20 @@ jobs:
     if: github.repository == 'ohmyzsh/ohmyzsh'
     steps:
       - name: Harden the runner (Audit all outbound calls)
+<<<<<<< HEAD
         uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+=======
+        uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
         with:
           egress-policy: audit
 
       - name: Set up git repository
+<<<<<<< HEAD
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+=======
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+>>>>>>> f59a1b3d7049d662f2f8ad5e05246c77694abd43
       - name: Install zsh
         run: sudo apt-get update; sudo apt-get install zsh
       - name: Check syntax
