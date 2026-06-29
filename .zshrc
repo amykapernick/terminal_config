@@ -66,3 +66,4 @@ zmodload zsh/mapfile
 
 # 1Password CLI
 # eval $(op signin)
+export PATH="$HOME/.local/bin:$PATH"

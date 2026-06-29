@@ -41,3 +41,11 @@ gh_ssh () {
 	gh ssh-key add ~/.ssh/$name.pub -t $terminal
 	gh ssh-key list
 }
+
+sssh () {
+	name=$1
+	ip=$2
+	ssh_key=${3:-$name}
+
+	ssh -i ~/.ssh/$ssh_key $name@$ip
+}
