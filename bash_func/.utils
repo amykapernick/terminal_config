@@ -21,6 +21,15 @@ start () {
 	npm run dev
 }
 
+cleanup () {
+	docker system prune -af --volumes
+	sudo apt clean && sudo apt autoremove -y
+	npm cache clean --force
+	pip cache purge
+	brew cleanup -s && brew cleanup --prune=all
+	empty_trash
+}
+
 empty_trash () {
 	rip --decompose
 }

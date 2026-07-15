@@ -3,15 +3,12 @@
 # -----------------------------
 export PATH=/bin:/usr/bin:/usr/local/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"        # for zoxide
-export PATH="$PATH:/usr/local/bin"          # for op CLI
+export PATH="$HOME/.local/bin:$PATH"        # for op CLI
 export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)  # must come last so brew's bin wins over /usr/local/bin
 
 # fnm (Node version manager)
-FNM_PATH="/home/amy/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env)"
-fi
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # -----------------------------
 # oh-my-zsh base
@@ -36,7 +33,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "TamCore/autoupdate-oh-my-zsh-plugins"
 
 # install/load plugins
-if ! zplug check --verbose; then
+if ! zplug check; then
   zplug install
 fi
 zplug load
@@ -48,8 +45,7 @@ STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh)"
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval $(thefuck --alias fuck)
+fuck() { eval $(thefuck --alias); fuck "$@"; unfunction fuck; }
 # eval "$(fzf --zsh)"   # uncomment if you want fzf integration
 
 # -----------------------------
@@ -57,13 +53,18 @@ eval $(thefuck --alias fuck)
 # -----------------------------
 . ~/.bash_func
 
-export DISPLAY=$(ip route | awk '/^default/{print $3}'):0.0
+export DISPLAY=:0
 export BROWSER=host_chrome
+export BAT_THEME="Catppuccin Mocha"
 
 # zsh modules
-zmodload -ap zsh/mapfile mapfile
 zmodload zsh/mapfile
 
 # 1Password CLI
-# eval $(op signin)
-export PATH="$HOME/.local/bin:$PATH"
+# Requires: 1Password for Windows running + Settings > Developer > "Integrate with 1Password CLI" enabled
+export OP_BIOMETRIC_UNLOCK_ENABLED=true
+if ! op whoami &>/dev/null; then
+    OP_BIOMETRIC_UNLOCK_ENABLED=true op signin --raw &>/dev/null \
+        || eval $(op signin) 2>/dev/null \
+        || true
+fi

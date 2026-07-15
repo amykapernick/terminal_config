@@ -21,16 +21,15 @@ update_doppler () {
 }
 
 install_global () {
-	npm install -g npm-check 
-	npm install -g azure-functions-core-tools 
+	npm install -g npm-check
+	npm install -g azure-functions-core-tools
 	npm install -g license
-	npm install -g netlify-cli 
-	npm install -g qnm 
-	npm install -g spaceship-prompt
+	npm install -g netlify-cli
+	npm install -g qnm
 	npm install -g @azure/static-web-apps-cli
 	npm install -g doppler
 	npm install -g linkinator
-	npm install -g concurrently	
+	npm install -g concurrently
 }
 
 install_brew () {
@@ -47,12 +46,16 @@ install_brew () {
 	brew install rm-improved
 	brew tap charmbracelet/tap
 	brew install charmbracelet/tap/gum
-	brew install glow
 	brew install ngrok/ngrok/ngrok
 	brew install eza
 	brew install zsh-syntax-highlighting
 	brew install zsh-autosuggestions
 	brew install --cask font-powerline-symbols
+	brew install bat
+	brew install fd
+	brew install ripgrep
+	brew install jq
+	brew install git-delta
 }
 
 install_utilities () {
@@ -111,6 +114,7 @@ update () {
 	update_plugins
 	fnm install --lts
 	fnm use --lts
+	fnm default lts-latest
 	sudo doppler update
 	install_utilities
 	install_brew
@@ -131,9 +135,10 @@ check_ubuntu () {
 }
 
 update_node () {
-	fnm install $1
-	fnm use $1
-	fnm default $1
+	local version=${1:-lts}
+	fnm install "$version"
+	fnm use "$version"
+	fnm default "$version"
 	install_global
 }
 
