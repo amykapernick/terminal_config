@@ -56,6 +56,7 @@ install_brew () {
 	brew install ripgrep
 	brew install jq
 	brew install git-delta
+	brew install ffmpeg
 }
 
 install_utilities () {
@@ -108,6 +109,14 @@ install_utilities () {
 	sudo apt install zoxide
 }
 
+install_pip () {
+	pip3 install --user --break-system-packages requests python-dotenv
+}
+
+install_other () {
+	sudo -v ; curl https://rclone.org/install.sh | sudo bash
+}
+
 update () {
 	update_ubuntu
 	update_prompt
@@ -119,6 +128,8 @@ update () {
 	install_utilities
 	install_brew
 	install_global
+	install_pip
+	install_other
 	npm-check -gu
 }
 

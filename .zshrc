@@ -68,3 +68,11 @@ if ! op whoami &>/dev/null; then
         || eval $(op signin) 2>/dev/null \
         || true
 fi
+
+# pnpm
+export PNPM_HOME="/home/amy/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
