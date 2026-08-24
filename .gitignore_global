@@ -1,3 +1,4 @@
 codealike.json
 *:Zone.Identifier
 .env
+**/.claude/settings.local.json
