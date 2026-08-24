@@ -82,3 +82,6 @@ data
 .docker
 .copilot
 snap
+.claude/
+.claude.json
+.expo/

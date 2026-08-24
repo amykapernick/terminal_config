@@ -58,7 +58,7 @@ eval $(thefuck --alias fuck)
 . ~/.bash_func
 
 export DISPLAY=$(ip route | awk '/^default/{print $3}'):0.0
-export BROWSER=host_chrome
+export BROWSER=none
 
 # zsh modules
 zmodload -ap zsh/mapfile mapfile
