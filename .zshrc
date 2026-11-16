@@ -17,7 +17,7 @@ fi
 # -----------------------------
 # PATH (typeset -U drops duplicates, so re-sourcing is safe)
 # -----------------------------
-typeset -U path fpath
+typeset -gU path fpath  # -g: stays global when re-sourced from a function (refresh)
 [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PNPM_HOME="$HOME/.local/share/pnpm"

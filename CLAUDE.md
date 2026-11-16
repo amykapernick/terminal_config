@@ -28,6 +28,8 @@ matters when the task is about the terminal setup itself.
   - Platform-only code goes in `~/.zsh/conf/linux.zsh` or `wsl.zsh`; check `$IS_WSL` (zsh) or
     `_is_wsl` (packages.zsh).
   - Guard optional tools with `(( $+commands[tool] ))`.
+- **`refresh` re-sources `.zshrc` from inside a function**, where a plain `typeset` makes a
+  local variable. Use `typeset -g` for anything top-level in `.zshrc` and `~/.zsh/conf/*.zsh`.
 - **`packages.zsh` must stay bash-compatible:** `setup_terminal.sh` sources it with bash.
 - **Interactive shells alias** `ls cat find grep curl rm` to `eza bat fd rg curlie rip`.
   - Inside functions and scripts the real commands are used, so write standard syntax.
@@ -42,5 +44,7 @@ for f in ~/.zshrc ~/.zsh/conf/*.zsh; do zsh -n "$f"; done           # syntax
 bash -n ~/.zsh/conf/packages.zsh                                     # stays bash-compatible
 zsh -i -c 'echo READY'                                               # loads without errors (native)
 WSL_DISTRO_NAME=Ubuntu zsh -i -c 'echo READY'                        # WSL path
+zsh -i -c 'refresh; refresh; command -v brew grep'                   # re-sourcing from a function works
+STARSHIP_LOG=warn starship prompt >/dev/null                         # prompt config has no warnings
 for i in 1 2 3; do /usr/bin/time -f %es zsh -i -c exit; done         # startup time (~0.13s)
 ```
