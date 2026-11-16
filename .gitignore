@@ -14,6 +14,7 @@
 
 # Shell (zsh is the main shell; bash files are just a fallback)
 !/.zshrc
+!/.zshenv
 !/.zsh/
 # private SSH helpers; shareable ones go in hosts.zsh
 /.zsh/conf/ssh.zsh

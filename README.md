@@ -35,6 +35,7 @@ Afterwards, copy these from another machine (they're deliberately not in git):
 
 ```
 ~/
+├── .zshenv                 tiny: stops Ubuntu's /etc/zsh/zshrc running a second compinit
 ├── .zshrc                  main config: PATH, oh-my-zsh, prompt, then loads ~/.zsh/conf
 ├── .zsh/
 │   ├── conf/               zsh-only functions and aliases, one file per topic
