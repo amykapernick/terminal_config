@@ -203,7 +203,7 @@ command, its usage shows under the prompt.
 | Script | Does |
 |---|---|
 | `project_styles/gen_colours.py` | Used by `gen_colours` |
-| `gh-bulk-issues.py` | Create GitHub issues in bulk from a markdown file (see `bulk_issues.md`) |
+| `gh-bulk-issues.py` | Create GitHub issues in bulk from a markdown file (example input: `bulk_issues.example.md`) |
 | `transcribe_video.py` | Video to timestamped transcription |
 | `mealie/import_notion.py` | Migrate recipes from a Notion database into Mealie (`withenv` for the tokens) |
 | `mealie/import_from_media.py` | Recipe photos to Mealie via Azure OpenAI vision |
