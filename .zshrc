@@ -1,64 +1,65 @@
+# ~/.zshrc - shared by native Linux and WSL.
+# Anything that only applies to one of them lives in ~/.zsh/conf/linux.zsh or wsl.zsh.
+#
+# Layout:
+#   ~/.zsh/conf/*.zsh   functions, aliases and per-OS config (zsh only)
+#   ~/.zsh/plugins/     zsh plugins, as git submodules (update with: update_plugins)
+
 # -----------------------------
-# PATH setup
+# Platform
 # -----------------------------
-export PATH=/bin:/usr/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.cargo/bin:$PATH"        # for zoxide
-export PATH="$HOME/.local/bin:$PATH"        # for op CLI
-export PATH="/home/linuxbrew/.linuxbrew/opt/mongodb-community@4.4/bin:$PATH"
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)  # must come last so brew's bin wins over /usr/local/bin
+if [[ -n $WSL_DISTRO_NAME || $(</proc/sys/kernel/osrelease) == *[Mm]icrosoft* ]]; then
+  export IS_WSL=1
+else
+  unset IS_WSL
+fi
+
+# -----------------------------
+# PATH (typeset -U drops duplicates, so re-sourcing is safe)
+# -----------------------------
+typeset -U path fpath
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+path=(
+  $HOME/.local/bin
+  $BUN_INSTALL/bin
+  $PNPM_HOME/bin
+  ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/opt/python/libexec/bin}  # unversioned `python`/`pip` -> brew's python3
+  $path
+)
+path=($^path(N-/))  # drop folders that don't exist on this machine
 
 # fnm (Node version manager)
-eval "$(fnm env --use-on-cd --shell zsh)"
+(( $+commands[fnm] )) && eval "$(fnm env --use-on-cd --shell zsh)"
 
 # -----------------------------
-# oh-my-zsh base
+# oh-my-zsh (custom plugins come from ~/.zsh/plugins)
 # -----------------------------
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+ZSH_CUSTOM="$HOME/.zsh"
+fpath+=($ZSH_CUSTOM/plugins/zsh-completions/src)
 
-# -----------------------------
-# zplug plugin manager
-# -----------------------------
-source ~/.zplug/init.zsh
-
-# oh-my-zsh built-in plugins via zplug
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/ssh-agent", from:oh-my-zsh
-
-# third-party plugins via zplug
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions"
-zplug "TamCore/autoupdate-oh-my-zsh-plugins"
-
-# install/load plugins
-if ! zplug check; then
-  zplug install
+plugins=(git docker zsh-autosuggestions)
+# WSL: the 1Password SSH agent isn't reliable there, so load keys into a normal ssh-agent on start
+if (( IS_WSL )); then
+  zstyle :omz:plugins:ssh-agent identities id_default
+  plugins+=(ssh-agent)
 fi
-zplug load
+plugins+=(zsh-syntax-highlighting)  # must be the last plugin
+
+[[ -r $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 
 # -----------------------------
 # Prompt & helpers
 # -----------------------------
-STARSHIP_CONFIG=~/.config/starship.toml
-eval "$(starship init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
+(( $+commands[pay-respects] )) && eval "$(pay-respects zsh --alias fuck)"
 
-eval "$(zoxide init zsh)"
-fuck() { eval $(thefuck --alias); fuck "$@"; unfunction fuck; }
-# eval "$(fzf --zsh)"   # uncomment if you want fzf integration
-
-# -----------------------------
-# Misc configs
-# -----------------------------
-. ~/.bash_func
-
-# export DISPLAY=$(ip route ...) # WSL only
-# export BROWSER=none # WSL only
 export BAT_THEME="Catppuccin Mocha"
-
-# zsh modules
 zmodload zsh/mapfile
+autoload -U add-zsh-hook
 
 # Default 1Password CLI account (aimhigherweb inside ~/web, personal elsewhere)
 _op_account() {
@@ -67,36 +68,8 @@ _op_account() {
     *)       export OP_ACCOUNT=my.1password.com ;;
   esac
 }
-autoload -U add-zsh-hook
 add-zsh-hook chpwd _op_account
 _op_account
-
-# Browser for opened links (Chrome in ~/makerx, Firefox in ~/web, system default elsewhere)
-_browser_by_dir() {
-  local wrap=~/.local/bin/browser-by-dir
-  path=(${path:#$wrap})
-  case $PWD/ in
-    ~/makerx/*) export BROWSER=google-chrome ;;
-    ~/web/*)    export BROWSER=firefox ;;
-    *)          unset BROWSER; return ;;
-  esac
-  path=($wrap $path)
-}
-add-zsh-hook chpwd _browser_by_dir
-_browser_by_dir
-
-# 1Password CLI
-# Requires: 1Password for Windows running + Settings > Developer > "Integrate with 1Password CLI" enabled
-export OP_BIOMETRIC_UNLOCK_ENABLED=true
-# No eager signin: op prompts for authorisation lazily on first use in each terminal
-
-# pnpm
-export PNPM_HOME="/home/amy/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
 
 # Claude Code: use the work account (separate config dir) inside ~/makerx
 claude() {
@@ -108,8 +81,29 @@ claude() {
 }
 
 # bun completions
-[ -s "/home/amy/.bun/_bun" ] && source "/home/amy/.bun/_bun"
+[[ -s $BUN_INSTALL/_bun ]] && source $BUN_INSTALL/_bun
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# -----------------------------
+# Functions, per-OS config, aliases
+# -----------------------------
+for _f in ~/.zsh/conf/{core,init,git,nav,packages,utils,vscode,ssh}.zsh(N); do
+  source $_f
+done
+unset _f
+
+if (( IS_WSL )); then
+  source ~/.zsh/conf/wsl.zsh
+else
+  source ~/.zsh/conf/linux.zsh
+fi
+
+# Aliases go after the functions, so functions always get the real commands
+# (find, grep, rm...) and the alias only changes what you type at the prompt.
+source ~/.zsh/conf/aliases.zsh
+source ~/.zsh/conf/help.zsh  # indexes everything above, so keep it after them
+
+# -----------------------------
+# zoxide: must stay at the very end. `--cmd cd` makes cd itself zoxide-aware
+# (cd foo jumps to the best match, cdi picks interactively).
+# -----------------------------
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh --cmd cd)"

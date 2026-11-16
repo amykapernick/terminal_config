@@ -16,7 +16,5 @@
 	path=~/makerx/.gitconfig
 [pull]
 	rebase = false
-[maintenance]
-	repo = /home/amy
 [pager]
 	branch = false
