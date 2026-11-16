@@ -53,21 +53,42 @@ fuck() { eval $(thefuck --alias); fuck "$@"; unfunction fuck; }
 # -----------------------------
 . ~/.bash_func
 
-export DISPLAY=$(ip route | awk '/^default/{print $3}'):0.0
-export BROWSER=none
+# export DISPLAY=$(ip route ...) # WSL only
+# export BROWSER=none # WSL only
 export BAT_THEME="Catppuccin Mocha"
 
 # zsh modules
 zmodload zsh/mapfile
 
+# Default 1Password CLI account (aimhigherweb inside ~/web, personal elsewhere)
+_op_account() {
+  case $PWD/ in
+    ~/web/*) export OP_ACCOUNT=aimhigherweb.1password.com ;;
+    *)       export OP_ACCOUNT=my.1password.com ;;
+  esac
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _op_account
+_op_account
+
+# Browser for opened links (Chrome in ~/makerx, Firefox in ~/web, system default elsewhere)
+_browser_by_dir() {
+  local wrap=~/.local/bin/browser-by-dir
+  path=(${path:#$wrap})
+  case $PWD/ in
+    ~/makerx/*) export BROWSER=google-chrome ;;
+    ~/web/*)    export BROWSER=firefox ;;
+    *)          unset BROWSER; return ;;
+  esac
+  path=($wrap $path)
+}
+add-zsh-hook chpwd _browser_by_dir
+_browser_by_dir
+
 # 1Password CLI
 # Requires: 1Password for Windows running + Settings > Developer > "Integrate with 1Password CLI" enabled
 export OP_BIOMETRIC_UNLOCK_ENABLED=true
-if ! op whoami &>/dev/null; then
-    OP_BIOMETRIC_UNLOCK_ENABLED=true op signin --raw &>/dev/null \
-        || eval $(op signin) 2>/dev/null \
-        || true
-fi
+# No eager signin: op prompts for authorisation lazily on first use in each terminal
 
 # pnpm
 export PNPM_HOME="/home/amy/.local/share/pnpm"
@@ -76,3 +97,19 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+# Claude Code: use the work account (separate config dir) inside ~/makerx
+claude() {
+  if [[ "$PWD" == "$HOME/makerx" || "$PWD" == "$HOME/makerx/"* ]]; then
+    CLAUDE_CONFIG_DIR="$HOME/.claude-work" command claude "$@"
+  else
+    command claude "$@"
+  fi
+}
+
+# bun completions
+[ -s "/home/amy/.bun/_bun" ] && source "/home/amy/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

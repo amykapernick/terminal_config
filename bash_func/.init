@@ -1,3 +1,5 @@
+# New Node project: folder, git, licence, .gitignore, CoC, GitHub remote, initial commit
+# usage: i_node <project-name>
 i_node () {
 	mkdir $1
 	cd $1
@@ -25,6 +27,8 @@ i_node () {
 	# # $license=$(echo "`cat ~/license`" | sed "s/{year}/2020/")
 }
 
+# Write doppler.yaml (dev config) for a project and run doppler setup
+# usage: i_doppler <doppler-project>
 i_doppler () {
 	echo "setup:" >> doppler.yaml
 	echo "        project: $1" >> doppler.yaml
@@ -32,11 +36,14 @@ i_doppler () {
 	doppler setup
 }
 
+# Start ssh-agent and add ~/.ssh/id_default
 fix_ssh () {
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_default
 }
 
+# Clone a repo, cd in, npm install and copy .env.example to .env
+# usage: clone <git-url>
 clone () {
 	git clone $1
 	repo=`expr "$1" :  '.*\(\/[a-z]*\.git\)'`

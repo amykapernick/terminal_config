@@ -24,12 +24,12 @@ git config --global user.name "Amy Kapernick"
 git config --global user.email "$email"
 
 # Use GitHub CLI to generate and add SSH keys
-brew install gh
-ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_default
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_default
-gh auth login
-gh ssh-key add ~/.ssh/id_default.pub --title "$terminal_name"
+#brew install gh
+#ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_default
+#eval "$(ssh-agent -s)"
+#ssh-add ~/.ssh/id_default
+#gh auth login
+#gh ssh-key add ~/.ssh/id_default.pub --title "$terminal_name"
 
 # Pull terminal config to user folder
 cd ~

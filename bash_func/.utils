@@ -1,12 +1,18 @@
+# Generate font CSS from a fonts folder and copy it to the clipboard
+# usage: gen_fonts [folder=src/fonts/]
 gen_fonts () {
 	python /home/amy/functions/project_styles/gen_fonts.py --folder=${1:-src/fonts/}
 	echo 'Fonts have been copied to the clipboard'
 }
 
+# Generate colour styles from pasted Sass variables (Ctrl-D to finish)
+# usage: gen_colours [--gutenberg]
 gen_colours () {
 	python /home/amy/functions/project_styles/gen_colours.py $1
 }
 
+# Delete all files with an extension under the current folder (asks first)
+# usage: del_files <extension>
 del_files () {
 	find . -regex ".*\.$1$"
 	read -p "Are you sure youw ant to delete these files? (y/n)" response
@@ -16,11 +22,13 @@ del_files () {
 	fi
 }
 
+# Run npm start (if present), then npm run dev
 start () {
 	npm start --if-present
 	npm run dev
 }
 
+# Free disk space: prune Docker, apt, npm, pip and brew caches, empty trash
 cleanup () {
 	docker system prune -af --volumes
 	sudo apt clean && sudo apt autoremove -y
@@ -30,10 +38,13 @@ cleanup () {
 	empty_trash
 }
 
+# Permanently empty the rip trash
 empty_trash () {
 	rip --decompose
 }
 
+# Generate an ed25519 SSH key in ~/.ssh and add it to the agent
+# usage: new_ssh <key-name> <email>
 new_ssh () {
 	name=$1
 	email=$2
@@ -43,14 +54,10 @@ new_ssh () {
 	ssh-add ~/.ssh/$name
 }
 
-gh_ssh () {
-	name=$1
-	terminal=$2
 
-	gh ssh-key add ~/.ssh/$name.pub -t $terminal
-	gh ssh-key list
-}
 
+# SSH as <user>@<ip> using ~/.ssh/<key> (key defaults to the user name)
+# usage: sssh <user> <ip> [key=<user>]
 sssh () {
 	name=$1
 	ip=$2
@@ -58,3 +65,4 @@ sssh () {
 
 	ssh -i ~/.ssh/$ssh_key $name@$ip
 }
+

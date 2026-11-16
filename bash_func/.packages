@@ -1,11 +1,15 @@
+# Install stylelint SMACSS/SCSS/order configs as dev dependencies
 install_stylelint () {
 	npm install --save-dev stylelint-config-property-sort-order-smacss stylelint-scss stylelint-order
 }
 
+# Install eslint with airbnb-base, import and react plugins
 install_eslint () {
 	npm install eslint eslint-config-airbnb-base eslint-plugin-import eslint-plugin-react
 }
 
+# Download and install a tunnelto release
+# usage: update_tunnel <version-tag>
 update_tunnel () {
 	if [ -n $1 ]
 	then
@@ -16,10 +20,12 @@ update_tunnel () {
 	fi
 }
 
+# Install/upgrade the Doppler CLI with brew
 update_doppler () {
 	brew install dopplerhq/cli/doppler
 }
 
+# Install the global npm tools
 install_global () {
 	npm install -g npm-check
 	npm install -g azure-functions-core-tools
@@ -32,6 +38,7 @@ install_global () {
 	npm install -g concurrently
 }
 
+# Install the Homebrew tools
 install_brew () {
 	brew install thefuck
 	brew install dog
@@ -59,6 +66,7 @@ install_brew () {
 	brew install ffmpeg
 }
 
+# Install the apt packages and libraries
 install_utilities () {
 	sudo apt-get install ca-certificates
 	sudo apt-get install chromium-browser
@@ -109,14 +117,17 @@ install_utilities () {
 	sudo apt install zoxide
 }
 
+# Install the global Python packages
 install_pip () {
 	pip3 install --user --break-system-packages requests python-dotenv
 }
 
+# Install rclone
 install_other () {
 	sudo -v ; curl https://rclone.org/install.sh | sudo bash
 }
 
+# Update everything: Ubuntu, prompt, plugins, Node LTS, Doppler and all packages
 update () {
 	update_ubuntu
 	update_prompt
@@ -133,6 +144,7 @@ update () {
 	npm-check -gu
 }
 
+# apt update/upgrade and run an Ubuntu release upgrade
 update_ubuntu () {
 	sudo apt update
 	sudo apt upgrade
@@ -141,10 +153,13 @@ update_ubuntu () {
 	sudo do-release-upgrade -d
 }
 
+# Show the Ubuntu version
 check_ubuntu () {
 	lsb_release -a
 }
 
+# Install and switch to a Node version with fnm, then reinstall global tools
+# usage: update_node [version=lts]
 update_node () {
 	local version=${1:-lts}
 	fnm install "$version"
@@ -153,12 +168,14 @@ update_node () {
 	install_global
 }
 
+# Upgrade zsh, oh-my-zsh and starship
 update_prompt () {
 	sudo apt-get update && sudo apt-get install --only-upgrade zsh -y
 	omz update
 	starship update
 }
 
+# Update and clean zplug plugins
 update_plugins () {
 	zplug update
 	zplug clean --force

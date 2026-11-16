@@ -1,6 +1,6 @@
 alias rm="rip -i"
 alias ssh_fix="fix_ssh"
-alias dig="dog"
+# alias dig="dog"  # dog no longer in Homebrew
 alias cd="z"
 alias curl="curlie"
 alias man="tldr"
