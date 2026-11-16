@@ -8,6 +8,7 @@ It runs on **native Ubuntu** and on **WSL**. The shell is zsh: one `.zshrc` dete
 platform it's on and loads the right extras.
 
 > ⚠️ This repo is **public**. Never commit secrets, IPs, private hostnames or `.env` files.
+> Email addresses live in `~/.gitconfig.local` (read them with `git config email.<name>`).
 > See [Secrets](#secrets) and [Adding scripts](#adding-scripts).
 
 ## Setting up a new machine
@@ -24,6 +25,7 @@ Afterwards, copy these from another machine (they're deliberately not in git):
 
 | File | What it's for |
 |---|---|
+| `~/.gitconfig.local` | Email addresses: `user.email` plus named ones like `email.ddd` (included by `.gitconfig`) |
 | `~/.ssh/config` | SSH hosts (IPs, users, keys) |
 | `~/.ssh/<keys>` | Private keys. On Linux, import them into 1Password instead |
 | `~/.zsh/conf/ssh.zsh` | Private SSH helpers |
@@ -54,6 +56,7 @@ Afterwards, copy these from another machine (they're deliberately not in git):
 ├── functions/              Python scripts the zsh functions call
 ├── .config/                only starship, ghostty, vicinae and modes are tracked
 ├── git-summary/            submodule, used by `git-check`
+├── CLAUDE.md               context and rules for Claude sessions in ~
 └── setup_terminal.sh
 ```
 
@@ -127,7 +130,7 @@ command, its usage shows under the prompt.
 |---|---|
 | `refresh` | Reload `~/.zshrc` |
 | `check` | `git-check` across `~`, then check global npm packages for updates |
-| `new_ssh <name> [email]` | Create an ed25519 key. Prints the 1Password import step on Linux; adds it to the agent on WSL |
+| `new_ssh <name> [email]` | Create an ed25519 key (email defaults to `git config user.email`). Prints the 1Password import step on Linux; adds it to the agent on WSL |
 | `withenv <cmd>` | Run a command with secrets from 1Password (Linux) or `~/.env` |
 
 ### Git (`git.zsh`)
@@ -206,6 +209,9 @@ command, its usage shows under the prompt.
 
 ### App config (`~/.config`)
 
+Only the folders and files listed in `.gitignore` are tracked. The rest of `~/.config` stays
+ignored: it holds browser profiles, logins and tokens (`gh/`, `1Password/`, `Code/`, `dconf/`...).
+
 | Path | What |
 |---|---|
 | `starship.toml` | Prompt |
@@ -235,7 +241,8 @@ Where new things go. This applies to people and to AI coding agents.
 3. **A longer script a function calls** (Python etc.) → `~/functions/<area>/`.
    - Read secrets from environment variables and run it with `withenv`. Never hardcode keys.
    - If it needs config, commit a `.env.example`, never a `.env`.
-4. **Anything private** (IPs, internal hostnames, tokens) → keep it out of git: `~/.ssh/config`,
+4. **Anything private** (IPs, internal hostnames, tokens, email addresses) → keep it out of git:
+   `~/.gitconfig.local`, `~/.ssh/config`,
    `~/.zsh/conf/ssh.zsh`, `~/.env` / `~/.env.op`.
 5. **New file or folder to track?** Add a `!/path` line to `.gitignore`, with any comment on
    *its own line* (git doesn't support comments at the end of a pattern line). Check with

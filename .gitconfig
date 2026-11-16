@@ -1,7 +1,10 @@
 [user]
-	email = amy@kapers.dev
 	name = Amy Kapernick
 	username = amykapernick
+# Private settings (email addresses): ~/.gitconfig.local, not in git.
+# Kept above the includeIf blocks so the work configs can override user.email.
+[include]
+	path = ~/.gitconfig.local
 [init]
 	defaultBranch = prod
 [push]

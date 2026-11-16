@@ -14,10 +14,10 @@ check () {
 
 # Generate an ed25519 SSH key in ~/.ssh (Linux: import it into 1Password afterwards;
 # WSL: it's added to the ssh-agent)
-# usage: new_ssh <key-name> [email=amy@kapers.dev]
+# usage: new_ssh <key-name> [email=git config user.email]
 new_ssh () {
 	[[ -z $1 ]] && { echo "usage: new_ssh <key-name> [email]"; return 1 }
-	ssh-keygen -t ed25519 -C "${2:-amy@kapers.dev}" -f ~/.ssh/$1 || return
+	ssh-keygen -t ed25519 -C "${2:-$(git config user.email)}" -f ~/.ssh/$1 || return
 	if (( IS_WSL ))
 	then
 		ssh-add ~/.ssh/$1

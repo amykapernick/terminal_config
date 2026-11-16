@@ -39,8 +39,11 @@ git submodule update --init --recursive
 # Package functions (bash-compatible)
 source ~/.zsh/conf/packages.zsh
 
-# Git
-git config --global user.email "$email"
+# Git: email addresses go in the private ~/.gitconfig.local (included by ~/.gitconfig), not the repo
+git config --file ~/.gitconfig.local user.email "$email"
+git config --file ~/.gitconfig.local email.personal "$email"
+chmod 600 ~/.gitconfig.local
+echo "Add any other addresses (e.g. email.ddd) to ~/.gitconfig.local"
 
 # SSH key for GitHub
 if [ ! -f ~/.ssh/id_default ]; then
