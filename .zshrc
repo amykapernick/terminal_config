@@ -23,6 +23,7 @@ typeset -U path fpath
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 path=(
+  $HOME/bin  # our own scripts (tracked in the repo)
   $HOME/.local/bin
   $BUN_INSTALL/bin
   $PNPM_HOME/bin
@@ -86,7 +87,7 @@ claude() {
 # -----------------------------
 # Functions, per-OS config, aliases
 # -----------------------------
-for _f in ~/.zsh/conf/{core,init,git,nav,packages,utils,vscode,ssh}.zsh(N); do
+for _f in ~/.zsh/conf/{core,init,git,nav,packages,utils,vscode,hosts,ssh}.zsh(N); do
   source $_f
 done
 unset _f

@@ -1,0 +1,7 @@
+#!/bin/sh
+# Opens web links in $BROWSER (set per directory by _browser_by_dir in ~/.zshrc).
+# Everything else goes to the real xdg-open.
+case "$1" in
+  http://*|https://*) [ -n "$BROWSER" ] && exec "$BROWSER" "$@" ;;
+esac
+exec /usr/bin/xdg-open "$@"

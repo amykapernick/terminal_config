@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "$HOME/dev/orca-captions/.venv/bin/python" "$HOME/dev/orca-captions/orca_captions.py" "$@"

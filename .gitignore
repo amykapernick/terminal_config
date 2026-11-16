@@ -8,13 +8,13 @@
 !/.gitignore
 !/.gitmodules
 !/README.md
-!/TODO.md
 !/setup_terminal.sh
 !/bulk_issues.md
 
 # Shell (zsh is the main shell; bash files are just a fallback)
 !/.zshrc
 !/.zsh/
+# private SSH helpers; shareable ones go in hosts.zsh
 /.zsh/conf/ssh.zsh
 !/.profile
 !/.bashrc
@@ -30,12 +30,19 @@
 /.config/*
 !/.config/starship.toml
 !/.config/ghostty/
+!/.config/vicinae/
+# work modes (this machine only for now)
+!/.config/modes/
 
 # Scripts and submodules
+# own executables, on PATH (see README > Adding scripts)
+!/bin/
+# scripts called by zsh functions, not run directly
 !/functions/
 !/git-summary
 
-# Empty project folders (keep the folder, ignore the contents)
+# Empty project folders (keep the folder, ignore the contents).
+# ~/makerx is deliberately not here: it only exists on one machine.
 !/dev/
 /dev/*
 !/dev/.gitkeep
@@ -51,3 +58,4 @@ __pycache__/
 *.pyc
 .env
 .env.*
+!.env.example

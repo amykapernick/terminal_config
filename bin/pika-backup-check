@@ -1,0 +1,28 @@
+#!/bin/sh
+# Pre-backup check for Pika Backup (called via flatpak-spawn --host).
+# Exits non-zero to cancel the backup when:
+#   - on battery with 20% or less charge
+#   - the internet connection is metered (phone hotspot, etc.)
+
+MIN_BATTERY=20
+
+on_ac=$(cat /sys/class/power_supply/ACAD/online 2>/dev/null || echo 1)
+if [ "$on_ac" != "1" ]; then
+  cap=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null | head -1)
+  if [ -n "$cap" ] && [ "$cap" -le "$MIN_BATTERY" ]; then
+    echo "Skipping backup: battery at ${cap}% (needs more than ${MIN_BATTERY}%)" >&2
+    exit 1
+  fi
+fi
+
+# Check the device carrying the default route
+dev=$(ip route show default | awk '{for(i=1;i<=NF;i++) if($i=="dev"){print $(i+1); exit}}')
+if [ -n "$dev" ]; then
+  case "$(nmcli -g GENERAL.METERED dev show "$dev" 2>/dev/null)" in
+    yes*)
+      echo "Skipping backup: $dev is a metered connection (hotspot?)" >&2
+      exit 1 ;;
+  esac
+fi
+
+exit 0

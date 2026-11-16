@@ -13,7 +13,7 @@ fi
 
 # Browser for opened links (Chrome in ~/makerx, Firefox in ~/web, system default elsewhere)
 _browser_by_dir() {
-	local wrap=~/.local/bin/browser-by-dir
+	local wrap=~/bin/browser-by-dir
 	path=(${path:#$wrap})
 	case $PWD/ in
 		~/makerx/*) export BROWSER=google-chrome ;;
